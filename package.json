@@ -1,5 +1,12 @@
 {
-  "dependencies": {
-    "jslint": "^0.12.1"
+  "scripts": {
+    "lint": "npx eslint"
+  },
+  "devDependencies": {
+    "eslint": "^8.27.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.5.0",
+    "eslint-plugin-promise": "^6.1.1"
   }
 }
