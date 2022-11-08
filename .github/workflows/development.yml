@@ -1,0 +1,26 @@
+name: Development
+
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # TODO: Run unit tests
+
+  lint:
+    name: Coding style
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install npm
+        run: npm i
+
+      - name: lint code
+        run: npm run lint
