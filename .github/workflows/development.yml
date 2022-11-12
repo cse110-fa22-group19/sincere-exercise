@@ -2,20 +2,25 @@ name: Development
 
 on:
   pull_request:
-  push:
-    branches:
-      - master
+    types:
+      - opened
+      - edited
+      - reopened
+  workflow_dispatch:
 
 jobs:
-  eslint:
+  build:
+    runs-on: ubuntu-latest
+    # TODO: Run unit tests
+
+  lint:
+    name: Coding style
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: mrdivyansh/eslint-action@v1.0.7
-        # GITHUB_TOKEN in forked repositories is read-only
-        # https://help.github.com/en/actions/reference/events-that-trigger-workflows#pull-request-event-pull_request
-        if: ${{ github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository }} 
-        with:
-          repo-token: ${{secrets.GITHUB_TOKEN}}
-          eslint-rc: .eslintrc.js
-          execute-on-files: ./packages
+      - uses: actions/checkout@v3
+
+      - name: Install npm
+        run: npm i
+
+      - name: lint code
+        run: npm run lint
