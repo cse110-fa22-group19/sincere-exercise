@@ -1,2 +1,1 @@
-const test = 1;
-const test2 = 1;
+var fs = require("eslint");
