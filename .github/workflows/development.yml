@@ -5,14 +5,16 @@ on: [push,pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-    # TODO: Run unit tests
 
-  lint:
-    name: Coding style
-    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - name: Install modules
-      run: yarn
-    - name: Run ESLint
-      run: eslint . --ext .js,.jsx,.ts,.tsx
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          # Need to set fetch depth to 0 for incremental diffs to grab the target branch
+          fetch-depth: '0'
+      - name: Run ESLint
+        uses: synergy-au/eslint-action@v1
+        with:
+          rules-path: './.eslintrc.json'
+          setup-from-package-json: 'true'
+    # TODO: Run unit tests
