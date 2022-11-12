@@ -1,20 +1,23 @@
 name: Development
 
-on: [push,pull_request]
+on:
+  pull_request:
+  push:
+    branches:
+      - master
 
 jobs:
-  build:
+  eslint:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          # Need to set fetch depth to 0 for incremental diffs to grab the target branch
-          fetch-depth: '0'
-      - name: Run ESLint
-        uses: synergy-au/eslint-action@v1
+          node-version: 16
+      - run: npm ci # or yarn install
+      - uses: sibiraj-s/action-eslint@v2
         with:
-          rules-path: './.eslintrc.json'
-          setup-from-package-json: 'true'
-    # TODO: Run unit tests
+          github-token: ${{ secrets.GITHUB_TOKEN }} # Optional
+          eslint-args: '--ignore-path=.gitignore --quiet'
+          extensions: 'js,jsx,ts,tsx'
+          annotations: true
