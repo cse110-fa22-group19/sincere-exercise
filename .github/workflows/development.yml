@@ -7,6 +7,8 @@ on:
       - master
       - ci-development-1
 
+
+
 jobs:
   eslint:
     runs-on: ubuntu-latest
@@ -16,6 +18,8 @@ jobs:
         with:
           node-version: 16
       - run: yarn install
+      - name: Install modules
+        run: yarn
       - uses: sibiraj-s/action-eslint@v2
         with:
           eslint-args: '--ignore-path=.gitignore --quiet'
