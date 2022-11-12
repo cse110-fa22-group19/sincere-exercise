@@ -1,2 +1,2 @@
 const test = 1;
-const test1 = 1;
+const test2 = 1;
