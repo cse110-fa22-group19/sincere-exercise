@@ -47,3 +47,8 @@ textarea {
     width: 350px;
     height: 150px;
 }
+
+th,
+td {
+    text-align: left;
+}
