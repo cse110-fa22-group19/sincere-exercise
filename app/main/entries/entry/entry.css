@@ -15,26 +15,35 @@ form {
     padding: 3%;
 }
 
-#buttons {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.submit_button {
     display: inline-block;
-    margin: 4px 50px;
+    font-size: 14px;
+    margin: 4px 20px 12px;
     cursor: pointer;
 }
 
-#submit_button {
+.cancel_button {
     display: inline-block;
-    margin: 4px 50px;
+    font-size: 14px;
+    margin: 4px 20px 12px;
     cursor: pointer;
 }
 
-#cancel_button {
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 50px;
-    cursor: pointer;
+tr:hover {
+    color: blue;
+}
+
+.submit_button:hover,
+.cancel_button:hover {
+    background-color: blue;
+    color: white;
+}
+
+#title:hover {
+    color: blue;
+}
+
+textarea {
+    width: 350px;
+    height: 150px;
 }
