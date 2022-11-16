@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+# Checks if user is attempting to commit to the main branch
+if [ "$branch" = "main" ]; then
+  echo "ERROR: You cannot commit directly to the main branch! Checkout to a new branch and make a PR instead."
+  exit 1
+fi
