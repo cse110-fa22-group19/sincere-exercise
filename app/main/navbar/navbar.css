@@ -1,0 +1,14 @@
+* { 
+    margin: 0em;
+    padding: 0em; 
+}
+div {
+    height: 3em;
+    text-align: center;
+    background-color:  #4442C0;
+    position: fixed;
+    width: 100%;
+  } 
+#Logo:hover{
+    cursor: pointer;
+}
