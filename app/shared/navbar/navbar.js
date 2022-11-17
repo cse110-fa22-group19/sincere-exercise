@@ -8,7 +8,7 @@ class NavBar extends HTMLElement {
         <head>
           <link rel="stylesheet" href="/app/shared/navbar/navbar.css">
         </head>
-        <div>
+        <div class="bar">
           <img id = "Logo" src="/assets/navbarLogo.png" alt="Logo">
         </div>
       `;
