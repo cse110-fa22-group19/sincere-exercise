@@ -6,10 +6,10 @@ class NavBar extends HTMLElement {
     connectedCallback() {
       this.innerHTML = `
         <head>
-          <link rel="stylesheet" href="../navbar/navbar.css">
+          <link rel="stylesheet" href="/app/shared/navbar/navbar.css">
         </head>
         <div>
-          <img id = "Logo" src="../../../assets/navbarLogo.png" alt="Logo">
+          <img id = "Logo" src="/assets/navbarLogo.png" alt="Logo">
         </div>
       `;
     }
