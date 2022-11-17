@@ -7,4 +7,13 @@
   border: 0;
   font-size: 24px;
   font-weight: 700;
+  cursor: pointer;
+}
+
+.new-entry-button:hover {
+  background: rgb(56, 54, 165);
+}
+
+.new-entry-button:active {
+  background: rgb(50, 48, 149);
 }
