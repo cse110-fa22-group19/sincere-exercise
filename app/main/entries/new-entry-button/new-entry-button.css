@@ -1,0 +1,10 @@
+.new-entry-button {
+  height: 68px;
+  width: 787px;
+  border-radius: 16px;
+  background: rgba(68, 66, 192, 1);
+  color: white;
+  border: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
