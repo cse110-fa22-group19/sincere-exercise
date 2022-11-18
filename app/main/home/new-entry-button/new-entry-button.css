@@ -1,20 +1,20 @@
 .new-entry-button {
-    height: 68px;
-    width: 787px;
-    border-radius: 16px;
-    background: rgba(68, 66, 192, 1);
-    color: white;
-    border: 0;
-    font-size: 24px;
-    font-weight: 700;
-    margin-top: 50px;
-    cursor: pointer;
+  height: 68px;
+  width: 787px;
+  border-radius: 16px;
+  background: rgba(68, 66, 192, 1);
+  color: white;
+  border: 0;
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 50px;
+  cursor: pointer;
 }
 
 .new-entry-button:hover {
-    background: rgb(56, 54, 165);
+  background: rgb(56, 54, 165);
 }
 
 .new-entry-button:active {
-    background: rgb(50, 48, 149);
+  background: rgb(50, 48, 149);
 }

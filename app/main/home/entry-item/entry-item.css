@@ -1,34 +1,34 @@
 .entry-component {
-    height: 110px;
-    width: 750px;
-    border-radius: 16px;
-    background: rgba(244, 243, 255, 1);
-    padding-top: 30px;
-    padding-left: 40px;
-    margin-top: 50px;
-    border-style: solid;
-    border-color: rgba(244, 243, 255, 1);
+  height: 110px;
+  width: 750px;
+  border-radius: 16px;
+  background: rgba(244, 243, 255, 1);
+  padding-top: 30px;
+  padding-left: 40px;
+  margin-top: 50px;
+  border-style: solid;
+  border-color: rgba(244, 243, 255, 1);
 }
 
 .entry-label {
-    font-size: 26px;
-    font-weight: 700;
-    line-height: 35px;
-    letter-spacing: 0em;
-    font-family: Nunito;
-    text-align: left;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 35px;
+  letter-spacing: 0em;
+  font-family: Nunito;
+  text-align: left;
 }
 
 .date-label {
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 25px;
-    letter-spacing: 0em;
-    font-family: Nunito;
-    text-align: center;
-    display: flex;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0em;
+  font-family: Nunito;
+  text-align: center;
+  display: flex;
 }
 
 .entry-component:hover {
-    border-color: rgb(50, 48, 149);
+  border-color: rgb(50, 48, 149);
 }
