@@ -11,8 +11,8 @@ class EntryItem extends HTMLElement {
       <div class="entry-component">
         <div class="inner-padding">
           <header class="entry-info">
-          <h3 class="entry-label">Entry</h3>
-          <h5 class="date-label">September 30, 2022</h5>
+            <h3 class="entry-label">Entry</h3>
+            <h5 class="date-label">September 30, 2022</h5>
           </header>
           <img class="delete-entry default" src="/assets/entry-delete.svg">
         </div>
