@@ -7,6 +7,7 @@
   align-items: center;
 }
 
+/* To add horizontal padding in text of the component */
 .inner-padding {
   width: inherit;
   display: flex;
@@ -19,6 +20,7 @@
   background: rgba(230, 229, 255, 1);
 }
 
+/* div wrapping the two text elements */
 .entry-info {
   display: flex;
   flex-direction: column;
@@ -38,6 +40,7 @@
   color: rgba(68, 66, 192, 1);
 }
 
+/* Don't show delete button if not hovering */
 .delete-entry {
   display: none;
   cursor: pointer;
