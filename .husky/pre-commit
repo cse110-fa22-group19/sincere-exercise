@@ -8,3 +8,17 @@ if [ "$branch" = "main" ]; then
   echo "ERROR: You cannot commit directly to the main branch! Checkout to a new branch and make a PR instead."
   exit 1
 fi
+
+npx prettier --write .
+
+npx lint-staged
+
+# Runs code style script, if files changed, add to this current commit
+# STAGED=($(git diff --cached --name-only))
+
+# if [[ "$STAGED" != "" ]]; then
+#   echo "Husky pre-commit script running..."
+#   npm run prettier
+#   STAGED=($(git diff --cached --name-only))
+#   git add "${STAGED[@]}"
+# fi
