@@ -1,38 +1,69 @@
+module.exports = { createId, createEntry, getAllEntries, deleteEntry };
+
+/**
+ * Entry Entity
+ * Contains the methods for the CRUD functionality of the Entry entity
+ * Functions: createId(startTime), createEntity(), getAllEntries(), deleteEntry(__id)
+ *
+ * Entry {
+ *   __id: string,
+ *   workoutType: string,
+ *   location: string,
+ *   startTime: string, (JSON parsable to Date)
+ *   endTime: string, (JSON parsable to Date)
+ *   intensity: number,
+ *   note: string,
+ * }
+ */
+
+/**
+ * Creates a unique id for an entry. Concats the startTime and 5 digit
+ * random number together.
+ * @returns {string} a string value as the id of the entry
+ */
+function createId(startTime) {
+  return startTime.toJSON() + (Math.floor(Math.random() * 90000) + 10000);
+}
+
 /**
  * Populate the entry page with a defalut-value entry
+ * @returns {Entry} an entry object containing the __id as well
  */
 function createEntry() {
   const now = new Date();
   const later = new Date();
   later.setHours(now.getHours() + 2);
 
-  // get localstorage entries
+  const entryId = createId(now);
+
+  // Create hardcoded entry to save
   const newEntry = {
-    __id: now,
+    __id: entryId,
     workoutType: 'Soccer',
     location: 'UCSD Soccer Field',
-    startTime: now,
-    endTime: later,
+    startTime: now.toJSON(),
+    endTime: later.toJSON(),
     intensity: 3,
     note: 'This was a pretty long match, so I ended up running a lot.',
   };
+
   const entries = getAllEntries();
-  // if no entries exist
-  if (entries.keys().length === 0) {
+  if (entries === {}) {
     let entries = {
-      [now.toJSON()]: newEntry,
+      [entryId]: newEntry,
     };
     localStorage.setItem('entries', JSON.stringify(entries));
-  }
-  // if there are existing entries
-  else {
-    entries[now.toJSON()] = newEntry;
+  } else {
+    entries[entryId] = newEntry;
     localStorage.setItem('entries', JSON.stringify(entries));
   }
+  return newEntry;
 }
 
 /**
- * Retrive the dictionary of entries from localStorage
+ * Retrive the dictionary of entries from localStorage and return all
+ * saved entries in a list
+ * @returns {Entry[]} a list of Entry objects
  */
 function getAllEntries() {
   const entries = localStorage.getItem('entries');
@@ -44,7 +75,7 @@ function getAllEntries() {
 
 /**
  * Delete the entry component with the key of the index
- * @param {integer} __id - The unique key for the entry component in the localStorage
+ * @param {integer} __id - The unique key for the entry component
  */
 function deleteEntry(__id) {
   const entries = getAllEntries();

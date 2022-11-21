@@ -1,18 +1,18 @@
 * {
-    margin: 0em;
-    padding: 0em; 
+  margin: 0em;
+  padding: 0em;
 }
 .bar {
-    height: 79px;
-    width: 100%;
-    background-color:#4442C0;
-    position: fixed;
-    display: flex;
-    align-items: center;
-    justify-content:center;
-    margin: 0;
+  height: 79px;
+  width: 100%;
+  background-color: #4442c0;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
 }
 
-#Logo:hover{
-    cursor: pointer;
+#Logo:hover {
+  cursor: pointer;
 }
