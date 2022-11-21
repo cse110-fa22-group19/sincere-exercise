@@ -16,6 +16,17 @@ beforeAll(() => {
   Object.defineProperty(window, 'localStorage', { value: mockLocalStorage });
 });
 
+describe('createId tests', () => {
+  test('when an id is generated', () => {
+    const today = new Date();
+    const id = createId(today);
+    const date = id.slice(0, today.toJSON().length);
+    const number = id.slice(-5);
+    expect(date).toEqual(today.toJSON()); // Matches date string
+    expect(number).toMatch(/\d{5}/); // Checks for 5 digits at the end
+  });
+});
+
 describe('createEntry tests', () => {
   test('when one entry is created', () => {
     const newEntry = createEntry();
