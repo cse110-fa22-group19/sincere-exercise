@@ -1,10 +1,10 @@
 class NavBar extends HTMLElement {
-    constructor() {
-      super();
-    }
-  
-    connectedCallback() {
-      this.innerHTML = `
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    this.innerHTML = `
         <head>
           <link rel="stylesheet" href="/app/shared/navbar/navbar.css">
         </head>
@@ -12,7 +12,7 @@ class NavBar extends HTMLElement {
           <img id = "Logo" src="/assets/navbarLogo.png" alt="Logo">
         </div>
       `;
-    }
   }
-  
-  customElements.define('navbar-component', NavBar);
+}
+
+customElements.define('navbar-component', NavBar);
