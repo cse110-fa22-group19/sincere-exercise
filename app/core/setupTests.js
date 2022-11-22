@@ -1,7 +1,7 @@
 // Mock of a localStorage object for testing
 // Source: https://robertmarshall.dev/blog/how-to-mock-local-storage-in-jest-tests/
 
-const mockLocalStorage = (() => {
+export const mockLocalStorage = (() => {
   let store = {};
 
   return {
@@ -26,5 +26,3 @@ const mockLocalStorage = (() => {
     },
   };
 })();
-
-module.exports = mockLocalStorage;

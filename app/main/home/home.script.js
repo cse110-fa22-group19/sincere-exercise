@@ -10,5 +10,8 @@ function createEntryItem() {
   const newEntryButton = document.querySelector('new-entry-button');
   newEntryButton.addEventListener('addNewEntry', () => {
     const newEntry = entryEntity.createEntry();
+    const entryItem = document.createElement('entry-item-component');
+    const entryList = document.querySelector('#entry-list');
+    entryList.appendChild(entryItem);
   });
 }
