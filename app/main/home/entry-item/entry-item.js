@@ -7,22 +7,6 @@ class EntryItem extends HTMLElement {
     super();
   }
 
-  deleteEntryCallback;
-
-  // get deleteEntryCallback() {
-  //   return this.deleteEntryCallback;
-  // }
-
-  // set deleteEntryCallback(fn) {
-  //   this.setAttribute(`deleteEntryCallback`, fn);
-  // }
-
-  // attributeChangedCallback(name, oldVal, newVal) {
-  //   if (name === `deleteEntryCallback`) {
-  //     this.deleteEntryCallback = newVal;
-  //   }
-  // }
-
   connectedCallback() {
     this.innerHTML = `
       <head>
@@ -41,13 +25,10 @@ class EntryItem extends HTMLElement {
       </div>
     `;
 
-    this.deleteEntryCallback = this.getAttribute(`deleteEntryCallback`);
-
-    // this.querySelector('button').addEventListener('click', () => {
-    //   console.log('button clicked!');
-    //   console.log(this.deleteEntryCallback);
-    //   eval(this.deleteEntryCallback);
-    // })
+    this.querySelector('button').addEventListener('click', () => {
+      const deleteEntry = new Event('deleteEntry');
+      this.dispatchEvent(deleteEntry);
+    });
   }
 }
 

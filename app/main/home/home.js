@@ -14,7 +14,6 @@ class Home extends HTMLElement {
       </head>
       <div id="entry-list">
         <new-entry-button></new-entry-button>
-        <entry-item-component></entry-item-component>
       </div>
     `;
   }
