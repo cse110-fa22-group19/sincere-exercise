@@ -36,7 +36,7 @@ function addEntryEvent() {
 function createEntryItem(entry) {
   const entryItem = document.createElement('entry-item-component');
   const entryList = document.querySelector('#entry-list');
-  entryItem.setAttribute('data', entry);
+  entryItem.setAttribute('data', JSON.stringify(entry));
   entryItem.addEventListener('deleteEntry', () => {
     if (!!entry) {
       entryEntity.deleteEntry(entry.__id);
