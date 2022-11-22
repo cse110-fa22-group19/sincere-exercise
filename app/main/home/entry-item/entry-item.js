@@ -1,3 +1,7 @@
+/**
+ * An item component that displays preview information about a single Entry
+ * Displays: activityType, startTime
+ */
 class EntryItem extends HTMLElement {
   constructor() {
     super();
@@ -14,10 +18,17 @@ class EntryItem extends HTMLElement {
             <h3 class="entry-label">Entry</h3>
             <h5 class="date-label">September 30, 2022</h5>
           </header>
-          <img class="delete-entry default" src="/assets/entry-delete.svg">
+          <button class="delete-entry">
+            <img src="/assets/entry-delete.svg">
+          </button>
         </div>
       </div>
     `;
+
+    this.querySelector('button').addEventListener('click', () => {
+      const deleteEntry = new Event('deleteEntry');
+      this.dispatchEvent(deleteEntry);
+    });
   }
 }
 

@@ -44,6 +44,8 @@
 .delete-entry {
   display: none;
   cursor: pointer;
+  border: none;
+  background: none;
 }
 
 /* If entry is hovered on, show delete icon */
