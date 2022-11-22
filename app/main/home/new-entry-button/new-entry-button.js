@@ -12,6 +12,7 @@ class NewEntryButton extends HTMLElement {
         Add New Entry
       </button>
     `;
+   
   }
 }
 
