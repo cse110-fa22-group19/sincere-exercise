@@ -12,8 +12,10 @@ class Home extends HTMLElement {
         <script src="./app/main/home/home.script.js" type="module"></script>
         <script src="./app/main/home/new-entry-button/new-entry-button.js" type="text/javascript" defer></script>
       </head>
-      <div id="entry-list">
-        <new-entry-button></new-entry-button>
+      <div class="home-page">
+        <div class="entries" id="entry-list">
+          <new-entry-button></new-entry-button>
+        </div>
       </div>
     `;
   }
