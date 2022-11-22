@@ -12,7 +12,12 @@ class NewEntryButton extends HTMLElement {
         Add New Entry
       </button>
     `;
-   
+
+    // When add new entry button is clicked, dispatch add event to create entry
+    document.querySelector('button').addEventListener('click', () => {
+      const addNewEntry = new Event('addNewEntry');
+      this.dispatchEvent(addNewEntry);
+    });
   }
 }
 
