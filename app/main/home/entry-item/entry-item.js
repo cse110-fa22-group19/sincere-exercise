@@ -17,7 +17,10 @@ class EntryItem extends HTMLElement {
    */
   formatDate(dateString) {
     const date = new Date(dateString);
-    return new Intl.DateTimeFormat('en-US', { dateStyle: 'long' }).format(date);
+    return new Intl.DateTimeFormat('en-US', {
+      dateStyle: 'long',
+      timeStyle: 'short',
+    }).format(date);
   }
 
   connectedCallback() {
