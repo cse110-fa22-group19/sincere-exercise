@@ -1,17 +1,18 @@
 import { entryEntity } from '../../core/entry.entity.js';
 
 window.addEventListener('DOMContentLoaded', () => {
-  // getAllEntries here
-  console.log('loaded');
+  // Initialization work
+  getAllEntries();
+
+  // Event handlers
   addEntryEvent();
-  getAllEntriesEvent();
 });
 
 /**
  * Gets all entries from localStorage and displays them on the home page.
  */
-function getAllEntriesEvent() {
-  const existingEntries = entryEntity.getAllEntries();
+function getAllEntries() {
+  const existingEntries = Object.values(entryEntity.getAllEntries());
   existingEntries.forEach((entry) => {
     createEntryItem(entry);
   });
@@ -24,8 +25,7 @@ function addEntryEvent() {
   const newEntryButton = document.querySelector('new-entry-button');
   newEntryButton.addEventListener('addNewEntry', () => {
     const newEntryEntity = entryEntity.createEntry();
-    const newEntryItem = createEntryItem(newEntryEntity);
-    appendEntryToList(newEntryItem);
+    createEntryItem(newEntryEntity);
   });
 }
 
