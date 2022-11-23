@@ -1,7 +1,6 @@
 name: Development
 
 on:
-  pull_request:
   push:
 
 jobs:
@@ -13,7 +12,7 @@ jobs:
       - run: npm ci
       - run: npm run lint
 
-  test:
+  unit-test:
     name: 'Unit Tests'
     runs-on: ubuntu-latest
     steps:
