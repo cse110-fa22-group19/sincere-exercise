@@ -1,54 +1,88 @@
-main {
+*{
+  font-family: 'Nunito', Helvetica, sans-serif;
+}
+main{
+  display: flex;
+  flex-direction: column;
+}
+h2{
+  color: black;
+  font-size: 2em;
+  font-weight: bold;
+}
+h3{
+  font-weight: bold;
+  font-size: 1.5em;
+  color: black;
+  margin-right: 28.5vw;
+}
+input{
+  border-color: #9795DC;
+  width: 34vw;
+  height: 1.75vw;
+  margin-top: 0.5em;
+  border-radius: 0.7vw;
+  color: #9795DC;
+  font-size: 1.75em;
+  padding-left: 0.5vw;
+  border: solid;
+}
+textarea{
+  border-color: #9795DC;
+  width: 34.5vw;
+  height: 7vw;
+  margin-top: 0.5em;
+  border-radius: 0.7vw;
+  color: #9795DC;
+  font-size: 1.75em;
+  padding-left: 0.3vw;
+  padding-top: 0.1vw;
+  border: solid;
+}
+#main_flexbox{
+  order: 1;
+  margin: 9em;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
-
-form {
+#intensity_input{
+  width: 10vw;
+  margin-right: 24vw;
+}
+#time_flexbox{
+  display: flex;
+  flex-direction: row;
+  margin-left: 27vw;
+  gap: 1.4vw;
+}
+#navbar{
+  order: 0;
+}
+#location_heading{
+  margin-right: 31vw;
+}
+#intensity_title{
+  margin-right: 27.5vw;
+}
+#note_title{
+  margin-right: 32.5vw;
+}
+#buttons_div{
+  display: flex;
+  flex-direction: row;
+  gap: 1vw;
+}
+.main_flexbox_child{
+  padding-top: 3em;
+  align-items: center;
+}
+.time div{
   display: inline-block;
 }
-
-#entry_table {
-  margin-top: 10%;
-  width: 100%;
+.time_input{
+  width: 10vw;
 }
-
-#entry_table td {
-  padding: 3%;
-}
-
-.submit_button {
-  display: inline-block;
-  font-size: 14px;
-  margin: 4px 20px 12px;
-  cursor: pointer;
-}
-
-.cancel_button {
-  display: inline-block;
-  font-size: 14px;
-  margin: 4px 20px 12px;
-  cursor: pointer;
-}
-
-tr:hover {
-  color: blue;
-}
-
-.submit_button:hover,
-.cancel_button:hover {
-  background-color: blue;
-  color: white;
-}
-
-#title:hover {
-  color: blue;
-}
-
-textarea {
-  width: 350px;
-  height: 150px;
-}
-
-th,
-td {
-  text-align: left;
+.time_title{
+  margin: 0vw;
 }

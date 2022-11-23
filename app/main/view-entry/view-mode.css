@@ -1,0 +1,74 @@
+*{
+    font-family: 'Nunito', Helvetica, sans-serif;
+  }
+  main{
+    display: flex;
+    flex-direction: column;
+  }
+  h2{
+    color: black;
+    font-size: 2em;
+    font-weight: bold;
+  }
+  h3{
+    font-weight: bold;
+    font-size: 1.5em;
+    color: black;
+    margin-right: 30em;
+  }
+  input{
+    border-color: #9795DC;
+    width: 34vw;
+    height: 1.75vw;
+    margin-top: 0.5em;
+    border-radius: 0.7vw;
+    color: #9795DC;
+    font-size: 1.75em;
+    padding-left: 0.5vw;
+    border: solid;
+  }
+  #main_flexbox{
+    order: 1;
+    margin: 9em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+  }
+  #intensity_input{
+    width: 17vw;
+    margin-right: 17.5vw;
+  }
+  #time_flexbox{
+    display: flex;
+    flex-direction: row;
+    margin-left: 27vw;
+    gap: 1.4vw;
+  }
+  #navbar{
+    order: 0;
+  }
+  .main_flexbox_child{
+    padding-top: 3em;
+    align-items: center;
+  }
+  .time div {
+    display: inline-block;
+  }
+  .smaller_heading{
+    margin-right: 32vw;
+  }
+  .time_input{
+    width: 10vw;
+  }
+  
+  .time_title{
+    margin: 0vw;
+  }
+  
+  td > p {
+    color: blue;
+}
+
+h2, img {
+    display: inline-block;
+}
