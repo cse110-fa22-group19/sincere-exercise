@@ -5,29 +5,13 @@ on:
   push:
 
 jobs:
-  setup:
-    name: 'Setup'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: npm ci
-      - name: 'Upload Installation'
-        uses: actions/upload-artifact@v3
-        with:
-          name: install-packages
-          path: .github/artifacts/package.txt
-          retention-days: 1
-
   lint:
     name: 'Lint'
     needs: setup
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: 'Download Installation'
-        uses: actions/download-artifact@v3
-        with:
-          name: install-packages
+      - run: npm ci
       - run: npm run lint
 
   test:
@@ -36,8 +20,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: 'Download Installation'
-        uses: actions/download-artifact@v3
-        with:
-          name: install-packages
+      - run: npm ci
       - run: npm test
