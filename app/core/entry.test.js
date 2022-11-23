@@ -106,6 +106,6 @@ describe('create and delete entries flow', () => {
     });
     const entries = JSON.parse(localStorage.getItem('entries'));
     expect(Object.keys(entries).length).toBe(0);
-    expect(entries).toEqual({ 3: 5 });
+    expect(entries).toEqual({});
   });
 });
