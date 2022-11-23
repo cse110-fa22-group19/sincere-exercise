@@ -15,7 +15,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: install-packages
-          path: ../artifacts/package.txt
+          path: artifacts/package.txt
           retention-days: 1
 
   lint:
