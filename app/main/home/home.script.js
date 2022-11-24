@@ -45,5 +45,10 @@ function createEntryItem(entry) {
       console.error(`ERROR: entity data object of this entry does not exist!`);
     }
   });
+  entryItem.addEventListener('navToView', () => {
+    const homePage = document.querySelector('home-page');
+    const viewEntryPage = document.createElement('view-entry-page');
+    homePage.parentNode.replaceChild(viewEntryPage, homePage);
+  })
   entryList.appendChild(entryItem);
 }

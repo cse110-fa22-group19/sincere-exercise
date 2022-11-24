@@ -28,9 +28,9 @@ class EntryItem extends HTMLElement {
 
     this.innerHTML = `
       <head>
-        <link rel="stylesheet" href="/app/main/home/entry-item/entry-item.css">
+        <link rel="stylesheet" href="./app/main/home/entry-item/entry-item.css">
       </head>
-      <div class="entry-component">
+      <div class="entry-component" id="entry-item">
         <div class="inner-padding">
           <header class="entry-info">
             <h3 class="entry-label">${this.entryData?.workoutType}</h3>
@@ -39,7 +39,7 @@ class EntryItem extends HTMLElement {
             )}</h5>
             </header>
           <button class="delete-entry">
-            <img src="/assets/entry-delete.svg">
+            <img src="./assets/entry-delete.svg">
           </button>
         </div>
       </div>
@@ -49,7 +49,13 @@ class EntryItem extends HTMLElement {
       const deleteEntry = new Event('deleteEntry');
       this.dispatchEvent(deleteEntry);
     });
+
+    this.querySelector('div').addEventListener('click', () =>{
+      const navToView = new Event('navToView');
+      this.dispatchEvent(navToView);
+    });
+    
   }
-}
+};
 
 customElements.define('entry-item-component', EntryItem);
