@@ -47,8 +47,8 @@ input{
 }
 #time_flexbox{
   display: grid;
-  grid-template-columns: 15% 15% 15%;
-  margin-left: 26.75%;
+  grid-template-columns: 25% 25% 25%;
+  margin-left: 24.3%;
 }
 #navbar{
   order: 0;
