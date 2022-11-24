@@ -63,9 +63,15 @@ input{
   width: 20px;
   height: 20px;
 }
+#edit_button:hover{
+  cursor: pointer;
+}
 .main_flexbox_child{
   padding-top: 3em;
 }
 .time_title{
   width: 100%;
+}
+#back_button{
+  cursor: pointer;
 }
