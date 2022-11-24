@@ -9,12 +9,13 @@ h2{
   color: black;
   font-size: 2em;
   font-weight: bold;
+  align-self: center;
 }
 h3{
   font-weight: bold;
   font-size: 1.5em;
   color: black;
-  margin-right: 34%;
+  margin-left: 30%;
 }
 input{
   border-color: #9795DC;
@@ -24,7 +25,8 @@ input{
   border-radius: 0.7vw;
   color: #9795DC;
   font-size: 1.75em;
-  padding-left: 1% ;
+  padding-left: 1%;
+  margin-left: 30%;
   border: solid;
 }
 textarea{
@@ -37,6 +39,7 @@ textarea{
   font-size: 1.75em;
   padding-left: 0.6%;
   padding-top: 0.3%;
+  margin-left: 30%;
   border: solid;
 }
 button{
@@ -52,31 +55,20 @@ button{
 #main_flexbox{
   order: 1;
   margin: 9em;
-  text-align: center;
   display: flex;
   flex-direction: column;
 }
 #intensity_input{
   width: 10%;
-  margin-right: 30%;
 }
 #time_flexbox{
   display: flex;
   flex-direction: row;
-  margin-left: 29.4%;
-  gap: 9%;
+  margin-left: 26.75%;
+  gap: 12.5%;
 }
 #navbar{
   order: 0;
-}
-#location_heading{
-  margin-right: 36.5%;
-}
-#intensity_title{
-  margin-right: 32.75%;
-}
-#note_title{
-  margin-right: 38.5%;
 }
 #buttons_div{
   display: flex;
@@ -87,7 +79,6 @@ button{
   margin-left: 35%;
   color: #4442c0;
   background-color: white;
-  
 }
 #save_button{
   color: white;
@@ -95,11 +86,11 @@ button{
 }
 .main_flexbox_child{
   padding-top: 3em;
-  align-items: center;
 }
 .time_input{
-  width: 120%;
+  margin-top: 5%;
+  width: 100%;
 }
 .time_title{
-  margin: 0vw;
+  margin-left: 32%;
 }
