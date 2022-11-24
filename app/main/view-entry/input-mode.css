@@ -62,10 +62,9 @@ button{
   width: 10%;
 }
 #time_flexbox{
-  display: flex;
-  flex-direction: row;
-  margin-left: 26.75%;
-  gap: 10.4%;
+  display: grid;
+  grid-template-columns: 20.5% 20.5% 20.5%;
+  margin-left: 25%;
 }
 #navbar{
   order: 0;
@@ -89,8 +88,5 @@ button{
 }
 .time_input{
   margin-top: 5%;
-  width: 100%;
-}
-.time_title{
-  margin-left: 32%;
+  width: 70%;
 }
