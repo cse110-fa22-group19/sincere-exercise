@@ -65,7 +65,7 @@ button{
   display: flex;
   flex-direction: row;
   margin-left: 26.75%;
-  gap: 12.5%;
+  gap: 10.4%;
 }
 #navbar{
   order: 0;
