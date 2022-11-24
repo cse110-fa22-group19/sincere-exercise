@@ -79,9 +79,17 @@ button{
   color: #4442c0;
   background-color: white;
 }
+#cancel_button:hover{
+  cursor:pointer;
+  font-style: oblique;
+}
 #save_button{
   color: white;
   background-color: #4442c0;
+}
+#save_button:hover{
+  cursor:pointer;
+  font-style: oblique;
 }
 .main_flexbox_child{
   padding-top: 3em;
