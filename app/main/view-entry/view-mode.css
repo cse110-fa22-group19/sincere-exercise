@@ -54,7 +54,10 @@ input{
   order: 0;
 }
 #top_flexbox{
-  display: inline-block;
+  display: grid;
+  grid-template-columns: 33% 50% 10%;
+  margin-left: 30%;
+  width: 50%;
 }
 #edit_button{
   width: 20px;
