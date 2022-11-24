@@ -60,6 +60,7 @@ input{
   width: 50%;
 }
 #edit_button{
+  padding-top: 20%;
   width: 20px;
   height: 20px;
 }
