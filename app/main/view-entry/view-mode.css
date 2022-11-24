@@ -46,17 +46,15 @@ input{
   width: 10%;
 }
 #time_flexbox{
-  display: flex;
-  flex-direction: row;
-  margin-left: 28%;
-  gap: 10.4%;
+  display: grid;
+  grid-template-columns: 15% 15% 15%;
+  margin-left: 26.75%;
 }
 #navbar{
   order: 0;
 }
 #top_flexbox{
-  display: flex;
-  flex-direction: column;
+  display: inline-block;
 }
 #edit_button{
   width: 20px;
@@ -64,12 +62,6 @@ input{
 }
 .main_flexbox_child{
   padding-top: 3em;
-}
-.time_flexbox_value{
-  margin: 0;
-}
-.time_input{
-  margin-top: 5%;
 }
 .time_title{
   width: 100%;
