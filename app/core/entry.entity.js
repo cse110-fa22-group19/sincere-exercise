@@ -75,7 +75,7 @@ entryEntity.getAllEntries = () => {
 
 /**
  * Delete the entry component with the key of the index
- * @param {integer} __id - The unique key for the entry component
+ * @param {number} __id - The unique key for the entry component
  */
 entryEntity.deleteEntry = (__id) => {
   const entries = entryEntity.getAllEntries();
@@ -84,9 +84,11 @@ entryEntity.deleteEntry = (__id) => {
 };
 
 /**
- * Populate the entry page with the user input, assign new id and update the all entries by passing them in this function
- * @param {dictionary object} - Pass the entry objects that we want to update
- * @return integer - if updated correctly, the function will return the ID of the entries that has been updated, if failed, it will return -1
+ * Populate the entry page with the user input, assign new id and update the all
+ * entries by passing them in this function
+ * @param {Entry} entry - Pass the entry objects that we want to update
+ * @returns {number} - if updated correctly, the function will return the ID of the
+ * entries that has been updated, if failed, it will return -1
  */
 entryEntity.updateEntry = (entry) => {
   const entries = entryEntity.getAllEntries();
@@ -101,8 +103,8 @@ entryEntity.updateEntry = (entry) => {
 
 /**
  * Get a single entry by __id and return it from the local storage
- * @param integer (__id) - The ID of the entry that we want to retrieve
- * @return dictionary object - returns the entry in local storage represented by that ID.
+ * @param {number} __id - The ID of the entry that we want to retrieve
+ * @returns {Entry} - returns the entry in local storage represented by that ID.
  */
 entryEntity.getEntry = (__id) => {
   const entries = entryEntity.getAllEntries();

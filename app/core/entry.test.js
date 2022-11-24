@@ -126,7 +126,6 @@ describe('Create and update entries flow', () => {
 
   test('when there is no entry', () => {
     const now = new Date();
-    const start = now.toJSON();
     const testEntry = {
       __id: 0,
       workoutType: 'Soccer',
@@ -149,7 +148,6 @@ describe('Create and update entries flow', () => {
   test('when updating an exsiting entry', () => {
     const fourthEntry = createdEntries[3];
     const now = new Date();
-    const start = now.toJSON();
     const testEntry = {
       __id: fourthEntry.__id,
       workoutType: 'Soccer',
@@ -167,9 +165,7 @@ describe('Create and update entries flow', () => {
   });
 
   test('when update a non-existing entry', () => {
-    const fourthEntry = createdEntries[3];
     const now = new Date();
-    const start = now.toJSON();
     const testEntry = {
       __id: 19,
       workoutType: 'Soccer',
@@ -182,35 +178,28 @@ describe('Create and update entries flow', () => {
 
     expect(entryEntity.updateEntry(testEntry)).toBe(-1);
   });
+});
 
-  /**
-   * Test for get entry.
-   * We tend to test get entry function using different test cases
-   * when there is no entry exist we expect the test to return undefined.
-   */
+/**
+ * Test for get entry.
+ * We tend to test get entry function using different test cases
+ * when there is no entry exist we expect the test to return undefined.
+ */
+describe('Create and get one entry flow', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
 
-  describe('Create and get one entry flow', () => {
-    beforeAll(() => {
-      localStorage.clear();
-    });
+  test('when get a non-existing entry', () => {
+    expect(entryEntity.getEntry(0)).toBe(undefined);
+  });
 
-    test('when get a non-existing entry', () => {
-      expect(entryEntity.getEntry(0)).toBe(undefined);
-    });
-
-    beforeAll(() => {
-      localStorage.clear();
-      for (let i = 0; i < 1; i++) {
-        createdEntries.push(entryEntity.createEntry());
-      }
-    });
-
-    test('When get a placeholder entry', () => {
-      //console.log(entryEntity.getAllEntries());
-      const entries = JSON.parse(localStorage.getItem('entries'));
-      //console.log(entryEntity.getEntry(Object.keys(entries)[0]));
-
-      expect(entryEntity.getEntry(Object.keys(entries)[0]).intensity).toBe(0);
-    });
+  test('when get a placeholder entry, correct values exist', () => {
+    entryEntity.createEntry();
+    const entries = JSON.parse(localStorage.getItem('entries'));
+    const entry = entryEntity.getEntry(Object.keys(entries)[0]);
+    expect(entry.workoutType).toBe('What is the activity to record?');
+    expect(entry.location).toBe('What is the location of this record?');
+    expect(entry.intensity).toBe(0);
   });
 });
