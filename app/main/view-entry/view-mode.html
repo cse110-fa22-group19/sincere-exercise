@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Create Entry</title>
+    <title>View Entry</title>
     <link rel="stylesheet" href="/app/main/view-entry/view-mode.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap"
@@ -13,53 +13,44 @@
 
   <body>
     <main>
-    <navbar-component id = "navbar"></navbar-component>
-    <div id = "main_flexbox">
-        <div class="top_line">
-            <h2 id="back_button"></h2>
-            <h2 id="title">View Entry</h2>
-            <img src="/app/main/view-entry/icons/edit_button.png" alt="Edit Mode" width="20" height="20">
+      <navbar-component id = "navbar"></navbar-component>
+      <div id = "main_flexbox">
+        <div id = "top_flexbox">
+          <h2 id="back_button"><</h2>
+          <h2 id="title">Input Entry</h2>
+          <img src="/sincere-exercise/app/main/view-entry/icons/edit_button.png" alt="Edit Mode" id="edit_button" >
         </div>
-        <div id = "Workout Type" class = "main_flexbox_child">
-            <h3>Workout Type</h3>
-            <p id="workout_name">Null</p>
+        <div class = "main_flexbox_child">
+          <h3>Workout Type</h3>
+          <h4 id = "workout_value">Soccer</h4>
         </div>
-
-        <div id = "location" class = "main_flexbox_child">
-            <h3>Location</h3>
-            <p id="location_name">Null</p>
+        <div class = "main_flexbox_child">
+          <h3 id = "location_heading">Location</h3>
+          <h4 id = "location_value">John Muir Field</h4>
         </div>
-        
-        <div id = "time" class = "main_flexbox_child">
-            <div>
-                <h3>Exercise Date</h3>
-                <p id="exercise_date">Null</p>
+        <div id = "time_flexbox" class = "main_flexbox_child">
+          <div>
+            <h3 class = "time_title">Exercise Dates</h3>
+            <h4 id = "dates_value" class = "time_flexbox_value">11/16/2022</h4>
+          </div>
+          <div>
+            <h3 class = "time_title">Start Time</h3>
+            <h4 id="start_time" class = "time_flexbox_value">11:00 AM</h4>
             </div>
-            <div>
-                <h3>Exercise Date</h3>
-                <p id="exercise_date">Null</p>
-            </div>
-            <div>
-                <h3>Exercise Date</h3>
-                <p id="exercise_date">Null</p>
-            </div>
-            <h3>Start Time</h3>
-            <p id="start_time">Null</p>
-
-            <h3>End Time</h3>
-            <p id="end_time">Null</p>
+          <div>
+            <h3 class = "time_title">End Time</h3>
+            <h4 id="end_time" class = "time_flexbox_value">1:00 PM</h4>
+          </div>
         </div>
-
-        <div id = "intensity" class = "main_flexbox_child">
-            <h3>Intensity</h3>
-            <p id="intensity_value">Null</p>
+        <div class = "main_flexbox_child">
+          <h3 id = "intensity_title">Intensity (1 to 5)</h3>
+          <h4 id="intensity_value">5 - Most Intense</h4>
         </div>
-
-        <div id = "note" class = "main_flexbox_child">
-            <h3>Note</h3>
-            <p id="note_text">Null</p>
+        <div class = "main_flexbox_child">
+          <h3 id = "note_title">Note</h3>
+          <h4 id="note_value">I feel like I was in great form today</h4>
         </div>
-    </div>
+      </div>
     </main>
   </body>
 </html>

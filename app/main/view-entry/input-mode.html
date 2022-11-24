@@ -14,8 +14,10 @@
   <body>
     <main>
       <navbar-component id = "navbar"></navbar-component>
+      <!-- div that includes all data, previously a form -->
       <div id = "main_flexbox">
         <h2 id="title">Input Entry</h2>
+        <!-- workout type -->
         <div class = "main_flexbox_child">
           <h3>Workout Type</h3>
           <input
@@ -24,6 +26,7 @@
             placeholder="Enter Workout"
           />
         </div>
+        <!-- location -->
         <div class = "main_flexbox_child">
           <h3 id = "location_heading">Location</h3>
           <input
@@ -32,7 +35,9 @@
             placeholder="Enter location"
           />
         </div>
+        <!-- time info - date, start, and end -->
         <div id = "time_flexbox" class = "main_flexbox_child">
+          <!-- date -->
           <div>
             <h3 class = "time_title">Exercise Dates</h3>
             <input
@@ -41,6 +46,7 @@
               id="date"
             />
           </div>
+          <!-- start time -->
           <div>
             <h3 class = "time_title">Start Time</h3>
             <input
@@ -49,6 +55,7 @@
               id="start_time"
             />
           </div>
+          <!-- end time -->
           <div>
             <h3 class = "time_title">End Time</h3>
             <input
@@ -58,6 +65,7 @@
             />
           </div>
         </div>
+        <!-- intensity -->
         <div class = "main_flexbox_child">
           <h3 id = "intensity_title">Intensity (1 to 5)</h3>
           <input
@@ -67,11 +75,13 @@
             max="5"
           />
         </div>
+        <!-- note -->
         <div class = "main_flexbox_child">
           <h3 id = "note_title">Note</h3>
           <textarea>
           </textarea>
         </div>
+        <!-- buttons -->
         <div class = "main_flexbox_child">
           <div id = "buttons_div">
             <button id = "cancel_button">Cancel</button>
