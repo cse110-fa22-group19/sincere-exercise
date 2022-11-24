@@ -9,7 +9,7 @@
     "testEnvironment": "jsdom"
   },
   "lint-staged": {
-    "*{js,html,css,json}": "npx prettier --write"
+    "*{js,html,css,json,yml}": "npx prettier --write"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
