@@ -1,6 +1,10 @@
 import puppeteer from 'puppeteer';
 
-// TODO: https://levelup.gitconnected.com/running-puppeteer-with-jest-on-github-actions-for-automated-testing-with-coverage-6cd15bc843b0
+/**
+ * Home Page End to End tests
+ * Contains tests that test the Home page interface functionality.
+ * Actions to test: click add new entry, delete entry
+ */
 
 describe('Home end to end user flows', () => {
   let browser;
