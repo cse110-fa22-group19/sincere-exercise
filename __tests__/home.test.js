@@ -13,6 +13,7 @@ describe('Home end to end user flows', () => {
   beforeAll(async () => {
     browser = await puppeteer.launch();
     page = await browser.newPage();
+    console.log('User must have Live Server running on Port 5500');
     await page.goto('http://localhost:5500');
     localStorage.clear();
   });
