@@ -109,3 +109,97 @@ describe('create and delete entries flow', () => {
     expect(entries).toEqual({});
   });
 });
+
+/**
+ * Test for updating entries.
+ * We try to test entries flow with different test cases to check if the function return the true test when calling.
+ * When there is no entry test should return -1.
+ * when updating an exsiting entry test should return the updated entry from user.
+ * when update a non-existing we expect entry test to return -1.
+ */
+
+describe('Create and update entries flow', () => {
+  const createdEntries = [];
+  beforeAll(() => {
+    localStorage.clear();
+  });
+
+  test('when there is no entry', () => {
+    const now = new Date();
+    const testEntry = {
+      __id: 0,
+      workoutType: 'Soccer',
+      location: 'UCSD Soccer Field',
+      startTime: now.toJSON(),
+      endTime: now.toJSON(),
+      intensity: 3,
+      note: 'This was a pretty long match, so I ended up running a lot.',
+    };
+    expect(entryEntity.updateEntry(testEntry)).toBe(-1);
+  });
+
+  beforeAll(() => {
+    localStorage.clear();
+    for (let i = 0; i < 10; i++) {
+      createdEntries.push(entryEntity.createEntry());
+    }
+  });
+
+  test('when updating an exsiting entry', () => {
+    const fourthEntry = createdEntries[3];
+    const now = new Date();
+    const testEntry = {
+      __id: fourthEntry.__id,
+      workoutType: 'Soccer',
+      location: 'UCSD Soccer Field',
+      startTime: now.toJSON(),
+      endTime: now.toJSON(),
+      intensity: 3,
+      note: 'This was a pretty long match, so I ended up running a lot.',
+    };
+    entryEntity.updateEntry(testEntry);
+    const entries = JSON.parse(localStorage.getItem('entries'));
+    expect(JSON.stringify(entries[fourthEntry.__id])).toBe(
+      JSON.stringify(testEntry)
+    );
+  });
+
+  test('when update a non-existing entry', () => {
+    const now = new Date();
+    const testEntry = {
+      __id: 19,
+      workoutType: 'Soccer',
+      location: 'UCSD Soccer Field',
+      startTime: now.toJSON(),
+      endTime: now.toJSON(),
+      intensity: 3,
+      note: 'This was a pretty long match, so I ended up running a lot.',
+    };
+
+    expect(entryEntity.updateEntry(testEntry)).toBe(-1);
+  });
+});
+
+/**
+ * Test for get entry.
+ * We tend to test get entry function using different test cases
+ * when there is no entry exist we expect the test to return undefined.
+ */
+describe('Create and get one entry flow', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  test('when get a non-existing entry', () => {
+    expect(entryEntity.getEntry(0)).toBe(undefined);
+  });
+
+  test('when get a placeholder entry, correct values exist', () => {
+    entryEntity.createEntry();
+    const entries = JSON.parse(localStorage.getItem('entries'));
+    const entry = entryEntity.getEntry(Object.keys(entries)[0]);
+    expect(entry.workoutType).toBe('What is the activity to record?');
+    expect(entry.location).toBe('What is the location of this record?');
+    expect(entry.intensity).toBe(0);
+  });
+});
