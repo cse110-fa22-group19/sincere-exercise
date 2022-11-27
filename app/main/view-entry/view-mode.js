@@ -1,10 +1,10 @@
 class ViewEntry extends HTMLElement {
-    constructor() {
-      super();
-    }
-    
-    connectedCallback() {
-      this.innerHTML = `
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    this.innerHTML = `
     <head>
         <meta charset="UTF-8" />
         <title>View Mode</title>
@@ -59,7 +59,7 @@ class ViewEntry extends HTMLElement {
       </main>
     </body>
       `;
-    }
   }
-  
-  customElements.define('view-entry-page', ViewEntry);
+}
+
+customElements.define('view-entry-page', ViewEntry);

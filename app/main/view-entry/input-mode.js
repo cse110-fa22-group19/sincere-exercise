@@ -1,10 +1,10 @@
 class InputEntry extends HTMLElement {
-    constructor() {
-      super();
-    }
-    
-    connectedCallback() {
-      this.innerHTML = `
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    this.innerHTML = `
     <head>
       <meta charset="UTF-8" />
       <title>Input Mode</title>
@@ -87,7 +87,7 @@ class InputEntry extends HTMLElement {
       </main>
     </body>
       `;
-    }
   }
-  
-  customElements.define('input-entry-page', InputEntry);
+}
+
+customElements.define('input-entry-page', InputEntry);

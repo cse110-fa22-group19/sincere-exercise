@@ -1,7 +1,7 @@
 class ViewEntry extends HTMLElement {
-    constructor() {
-      super();
-      this.input = `
+  constructor() {
+    super();
+    this.input = `
       <head>
         <meta charset="UTF-8" />
         <title>Input Mode</title>
@@ -85,7 +85,7 @@ class ViewEntry extends HTMLElement {
       </body>
         `;
 
-        this.view = `
+    this.view = `
     <head>
         <meta charset="UTF-8" />
         <title>View Mode</title>
@@ -140,24 +140,19 @@ class ViewEntry extends HTMLElement {
       </main>
     </body>
       `;
-    }
-
-    
-
-    connectedCallback() {
-      this.innerHTML = this.input;
-    }
-
-
-    // testing methods
-    toView() {
-        this.innerHTML = this.view;
-    }
-    toInput() {
-        this.innerHTML = this.input;
-    }
   }
 
-  
-  
-  customElements.define('view-entry-page', ViewEntry);
+  connectedCallback() {
+    this.innerHTML = this.input;
+  }
+
+  // testing methods
+  toView() {
+    this.innerHTML = this.view;
+  }
+  toInput() {
+    this.innerHTML = this.input;
+  }
+}
+
+customElements.define('view-entry-page', ViewEntry);
