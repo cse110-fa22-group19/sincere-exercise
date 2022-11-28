@@ -54,7 +54,8 @@ class EntryItem extends HTMLElement {
       const navToView = new Event('navToView');
       this.dispatchEvent(navToView);
     });
-    
+
+ 
   }
 }
 

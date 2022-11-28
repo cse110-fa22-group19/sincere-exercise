@@ -46,11 +46,15 @@ function createEntryItem(entry) {
     }
   });
 
+  //Adds Navigation from entry item to viewpage
   entryItem.addEventListener('navToView', () => {
     const homePage = document.querySelector('home-page');
     const viewEntryPage = document.createElement('view-entry-page');
-    homePage.parentNode.replaceChild(viewEntryPage, homePage);
-  })
+    viewEntryPage.setAttribute("id","viewEntry");
+    const parentNode = homePage.parentNode;
+    parentNode.replaceChild(viewEntryPage, homePage);
+    
+  });
   
   entryList.appendChild(entryItem);
 }

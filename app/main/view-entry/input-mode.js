@@ -18,7 +18,6 @@ class InputEntry extends HTMLElement {
   
     <body>
       <main>
-        <navbar-component id = "navbar"></navbar-component>
         <div id = "main_flexbox">
           <h2 id="title">Input Entry</h2>
           <div class = "main_flexbox_child">
@@ -87,7 +86,16 @@ class InputEntry extends HTMLElement {
       </main>
     </body>
       `;
+    //add functionality to switch between input mode and view mode
+    let b = this.querySelector('button')
+    b.addEventListener('click',(event) => {
+      const inputPage = document.querySelector('input-entry-page');
+      const viewEntryPage = document.createElement('view-entry-page');
+      const parentNode = inputPage.parentNode;
+      parentNode.replaceChild(viewEntryPage, inputPage);
+    })
   }
+  
 }
 
 customElements.define('input-entry-page', InputEntry);
