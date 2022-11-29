@@ -5,12 +5,12 @@ class ViewEntry extends HTMLElement {
       <head>
         <meta charset="UTF-8" />
         <title>Input Mode</title>
-        <link rel="stylesheet" href="/app/main/view-entry/input-mode.css" />
+        <link rel="stylesheet" href="./app/main/view-entry/input-mode.css" />
         <link
           href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
-        <script src="/app/shared/navbar/navbar.js" type="text/javascript"></script>
+        <script src="./app/shared/navbar/navbar.js" type="text/javascript"></script>
       </head>
     
       <body>
@@ -89,12 +89,12 @@ class ViewEntry extends HTMLElement {
     <head>
         <meta charset="UTF-8" />
         <title>View Mode</title>
-        <link rel="stylesheet" href="/app/main/view-entry/view-mode.css" />
+        <link rel="stylesheet" href="./app/main/view-entry/view-mode.css" />
         <link
             href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap"
             rel="stylesheet"
         />
-        <script src="/app/shared/navbar/navbar.js" type="text/javascript"></script>
+        <script src="./app/shared/navbar/navbar.js" type="text/javascript"></script>
     </head>
   
     <body>
@@ -104,7 +104,7 @@ class ViewEntry extends HTMLElement {
           <div id = "top_flexbox">
             <h2 id="back_button"><</h2>
             <h2 id="title">Input Entry</h2>
-            <img src="/sincere-exercise/assets/edit-entry-icon.svg" alt="Edit Mode" id="edit_button">
+            <img src="./assets/edit-entry-icon.svg" alt="Edit Mode" id="edit_button">
           </div>
           <div class = "main_flexbox_child">
             <h3>Workout Type</h3>
