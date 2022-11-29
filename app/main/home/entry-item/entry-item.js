@@ -28,7 +28,7 @@ class EntryItem extends HTMLElement {
 
     this.innerHTML = `
       <head>
-        <link rel="stylesheet" href="/app/main/home/entry-item/entry-item.css">
+        <link rel="stylesheet" href="./app/main/home/entry-item/entry-item.css">
       </head>
       <div class="entry-component">
         <div class="inner-padding">
@@ -39,7 +39,7 @@ class EntryItem extends HTMLElement {
             )}</h5>
             </header>
           <button class="delete-entry">
-            <img src="/assets/entry-delete.svg">
+            <img src="./assets/entry-delete.svg">
           </button>
         </div>
       </div>
