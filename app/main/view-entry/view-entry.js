@@ -5,12 +5,12 @@ class ViewEntry extends HTMLElement {
       <head>
         <meta charset="UTF-8" />
         <title>Input Mode</title>
-        <link rel="stylesheet" href="/app/main/view-entry/input-mode.css" />
+        <link rel="stylesheet" href="./app/main/view-entry/input-mode.css" />
         <link
           href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
-        <script src="/app/shared/navbar/navbar.js" type="text/javascript"></script>
+        <script src="./app/shared/navbar/navbar.js" type="text/javascript"></script>
       </head>
     
       <body>
@@ -88,12 +88,12 @@ class ViewEntry extends HTMLElement {
     <head>
         <meta charset="UTF-8" />
         <title>View Mode</title>
-        <link rel="stylesheet" href="/app/main/view-entry/view-mode.css" />
+        <link rel="stylesheet" href="./app/main/view-entry/view-mode.css" />
         <link
             href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap"
             rel="stylesheet"
         />
-        <script src="/app/shared/navbar/navbar.js" type="text/javascript"></script>
+        <script src="./app/shared/navbar/navbar.js" type="text/javascript"></script>
     </head>
   
     <body>
