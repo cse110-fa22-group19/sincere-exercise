@@ -12,7 +12,7 @@ class ViewEntry extends HTMLElement {
         />
         <script src="./app/shared/navbar/navbar.js" type="text/javascript"></script>
       </head>
-    
+      
       <body>
         <main>
           <div id = "main_flexbox">
@@ -82,7 +82,7 @@ class ViewEntry extends HTMLElement {
           </div>
         </main>
       </body>
-        `;
+    `;
 
     this.view = `
     <head>
@@ -117,27 +117,27 @@ class ViewEntry extends HTMLElement {
               <h3 class = "time_title">Exercise Dates</h3>
               <h4 id = "dates_value" class = "time_flexbox_value">11/16/2022</h4>
             </div>
-            <div>
-              <h3 class = "time_title">Start Time</h3>
-              <h4 id="start_time" class = "time_flexbox_value">11:00 AM</h4>
+              <div>
+                <h3 class = "time_title">Start Time</h3>
+                <h4 id="start_time" class = "time_flexbox_value">11:00 AM</h4>
+                </div>
+              <div>
+                <h3 class = "time_title">End Time</h3>
+                <h4 id="end_time" class = "time_flexbox_value">1:00 PM</h4>
               </div>
-            <div>
-              <h3 class = "time_title">End Time</h3>
-              <h4 id="end_time" class = "time_flexbox_value">1:00 PM</h4>
+            </div>
+            <div class = "main_flexbox_child">
+              <h3 id = "intensity_title">Intensity (1 to 5)</h3>
+              <h4 id="intensity_value">5 - Most Intense</h4>
+            </div>
+            <div class = "main_flexbox_child">
+              <h3 id = "note_title">Note</h3>
+              <h4 id="note_value">I feel like I was in great form today</h4>
             </div>
           </div>
-          <div class = "main_flexbox_child">
-            <h3 id = "intensity_title">Intensity (1 to 5)</h3>
-            <h4 id="intensity_value">5 - Most Intense</h4>
-          </div>
-          <div class = "main_flexbox_child">
-            <h3 id = "note_title">Note</h3>
-            <h4 id="note_value">I feel like I was in great form today</h4>
-          </div>
-        </div>
-      </main>
-    </body>
-      `;
+        </main>
+      </body>
+    `;
   }
 
   connectedCallback() {
