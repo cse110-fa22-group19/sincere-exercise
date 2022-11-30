@@ -11,36 +11,105 @@ describe('View Entry end to end user flows', () => {
   let page;
 
   beforeAll(async () => {
-    browser = await puppeteer.launch();
+    browser = await puppeteer.launch({ headless: false });
     page = await browser.newPage();
     console.log('User must have Live Server running on Port 5500');
     await page.goto('http://localhost:5500'); // Change it to github link.
   });
-  /*
-User Flow 1
-    Click on an entry, then we go to the view entry page
-    Click go back, we go back
-User Flow 2
-    Click to view entry
-    Click edit entry, go to edit entry page
-    Click Cancel, go back to view entry page
-    Click back to go back home
-*/
+
   describe('Navigate between home page and view-entry page', () => {
     let home;
-    let EntryElement;
+    let entryElement;
+    let newEntryButtonElement;
+    let newEntryButton;
+    let backButton;
+    let viewEntrypage;
+    let homePage;
+    let viewEntry;
 
     beforeAll(async () => {
       home = await page.$('home-page');
-      EntryElement = await home.$('entry-item-component');
+      newEntryButtonElement = await home.$('new-entry-button');
+      newEntryButton = await newEntryButtonElement.$('button');
+      await newEntryButton.click();
     });
 
     test('Page changes to view_entry page', async () => {
-      const ViewEntry = await page.$('title');
-      //console.log();
-      const inText = await ViewEntry.getProperty('innerText');
-      const innerString = await inText.jsonValue();
-      expect(innerString).toBe('View Mode');
+      entryElement = await home.$('entry-item-component');
+      await entryElement.click();
+      viewEntry = await page.$('view-entry-page');
+      homePage = await page.$('home-page');
+      expect(homePage === null && viewEntry !== null).toBe(true);
     });
+
+    test('Page changes back to home page', async () => {
+      viewEntrypage = await page.$('#top_flexbox');
+      backButton = await viewEntrypage.$('#back_button');
+      await backButton.click();
+      await page.waitForNavigation();
+      homePage = await page.$('home-page');
+      viewEntry = await page.$('view-entry-page');
+      expect(homePage !== null && viewEntry === null).toBe(true);
+    });
+  });
+
+  describe('Navigate between home page and view-entry page and edit-entry page', () => {
+    let home;
+    let entryElement;
+    let newEntryButtonElement;
+    let newEntryButton;
+    let backButton;
+    let viewEntrypage;
+    let homePage;
+    let viewEntry;
+    let edit_button;
+    let inputEntry;
+
+    beforeAll(async () => {
+      home = await page.$('home-page');
+      newEntryButtonElement = await home.$('new-entry-button');
+      newEntryButton = await newEntryButtonElement.$('button');
+      await newEntryButton.click();
+    });
+
+    test('Page changes to view_entry page', async () => {
+      entryElement = await home.$('entry-item-component');
+      await entryElement.click();
+      viewEntry = await page.$('view-entry-page');
+      homePage = await page.$('home-page');
+      expect(homePage === null && viewEntry !== null).toBe(true);
+    });
+
+    test('Page changes to edit_entry page', async () => {
+      viewEntrypage = await page.$('#top_flexbox');
+      edit_button = await viewEntrypage.$('#edit_button');
+      await edit_button.click();
+      inputEntry = await page.$('input-entry-page');
+      viewEntry = await page.$('view-entry-page');
+      expect(inputEntry !== null && viewEntry === null).toBe(true);
+    });
+
+    test('Page changes from edit_entry to view-entry page', async () => {
+      edit_button = await page.$('#cancel_button');
+      await edit_button.click();
+      inputEntry = await page.$('input-entry-page');
+      viewEntry = await page.$('view-entry-page');
+      expect(inputEntry === null && viewEntry !== null).toBe(true);
+    });
+
+    test('Page changes back to home page', async () => {
+      viewEntrypage = await page.$('#top_flexbox');
+      backButton = await viewEntrypage.$('#back_button');
+      await backButton.click();
+      await page.waitForNavigation();
+      homePage = await page.$('home-page');
+      viewEntry = await page.$('view-entry-page');
+      expect(homePage !== null && viewEntry === null).toBe(true);
+    });
+  });
+
+  afterAll(async () => {
+    await page.close();
+    await browser.close();
   });
 });
