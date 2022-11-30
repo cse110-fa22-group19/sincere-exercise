@@ -12,9 +12,9 @@ class ViewEntry extends HTMLElement {
         />
         <script src="./app/shared/navbar/navbar.js" type="text/javascript"></script>
       </head>
+      
       <body>
         <main>
-          <navbar-component id = "navbar"></navbar-component>
           <div id = "main_flexbox">
             <h2 id="title">Input Entry</h2>
             <div class = "main_flexbox_child">
@@ -85,38 +85,38 @@ class ViewEntry extends HTMLElement {
     `;
 
     this.view = `
-      <head>
-          <meta charset="UTF-8" />
-          <title>View Mode</title>
-          <link rel="stylesheet" href="./app/main/view-entry/view-mode.css" />
-          <link
-              href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap"
-              rel="stylesheet"
-          />
-          <script src="./app/shared/navbar/navbar.js" type="text/javascript"></script>
-      </head>
-      <body>
-        <main>
-          <navbar-component id = "navbar"></navbar-component>
-          <div id = "main_flexbox">
-            <div id = "top_flexbox">
-              <h2 id="back_button"><</h2>
-              <h2 id="title">Input Entry</h2>
-              <img src="./assets/edit-entry-icon.svg" alt="Edit Mode" id="edit_button">
+    <head>
+        <meta charset="UTF-8" />
+        <title>View Mode</title>
+        <link rel="stylesheet" href="./app/main/view-entry/view-mode.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <script src="./app/shared/navbar/navbar.js" type="text/javascript"></script>
+    </head>
+  
+    <body>
+      <main>
+        <div id = "main_flexbox">
+          <div id = "top_flexbox">
+            <h2 id="back_button"><</h2>
+            <h2 id="title">View Entry</h2>
+            <img src="assets/edit-entry-icon.svg" alt="Edit Mode" id="edit_button">
+          </div>
+          <div class = "main_flexbox_child">
+            <h3>Workout Type</h3>
+            <h4 id = "workout_value">Soccer</h4>
+          </div>
+          <div class = "main_flexbox_child">
+            <h3 id = "location_heading">Location</h3>
+            <h4 id = "location_value">John Muir Field</h4>
+          </div>
+          <div id = "time_flexbox" class = "main_flexbox_child">
+            <div>
+              <h3 class = "time_title">Exercise Dates</h3>
+              <h4 id = "dates_value" class = "time_flexbox_value">11/16/2022</h4>
             </div>
-            <div class = "main_flexbox_child">
-              <h3>Workout Type</h3>
-              <h4 id = "workout_value">Soccer</h4>
-            </div>
-            <div class = "main_flexbox_child">
-              <h3 id = "location_heading">Location</h3>
-              <h4 id = "location_value">John Muir Field</h4>
-            </div>
-            <div id = "time_flexbox" class = "main_flexbox_child">
-              <div>
-                <h3 class = "time_title">Exercise Dates</h3>
-                <h4 id = "dates_value" class = "time_flexbox_value">11/16/2022</h4>
-              </div>
               <div>
                 <h3 class = "time_title">Start Time</h3>
                 <h4 id="start_time" class = "time_flexbox_value">11:00 AM</h4>
@@ -141,7 +141,27 @@ class ViewEntry extends HTMLElement {
   }
 
   connectedCallback() {
-    this.innerHTML = this.input;
+    // Switch view mode to input mode
+    this.innerHTML = this.view;
+    let edit = document.getElementById('edit_button')
+    edit.addEventListener('click', (event)=>{
+      const viewPage = document.querySelector('view-entry-page');
+      const inputPage = document.createElement('input-entry-page');
+      const parentNode = viewPage.parentNode;
+      parentNode.replaceChild(inputPage, viewPage);
+    });
+    //Switch View mode to Home page
+    let back = document.getElementById('back_button');
+    back.addEventListener('click', () => {
+      console.log('this button works');
+      const viewPage = document.querySelector('view-entry-page');
+      const homePage = document.createElement('home-page');
+      viewPage.setAttribute("id","viewEntry");
+      const parentNode = viewPage.parentNode;
+      parentNode.replaceChild(homePage, viewPage);
+      location.reload();
+    })
+
   }
 
   // testing methods

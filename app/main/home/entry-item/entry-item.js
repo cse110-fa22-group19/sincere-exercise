@@ -48,7 +48,15 @@ class EntryItem extends HTMLElement {
     this.querySelector('button').addEventListener('click', () => {
       const deleteEntry = new Event('deleteEntry');
       this.dispatchEvent(deleteEntry);
+      event.stopPropagation();
     });
+
+    this.querySelector('div').addEventListener('click', () =>{
+      const navToView = new Event('navToView');
+      this.dispatchEvent(navToView);
+    });
+
+ 
   }
 }
 
