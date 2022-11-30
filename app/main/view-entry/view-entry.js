@@ -1,6 +1,14 @@
+/**
+ * Entry page that has input mode and view mode.
+ */
 class ViewEntry extends HTMLElement {
   constructor() {
     super();
+    
+    /**
+     * HTML code for input mode of an entry.
+     * @type String
+     */
     this.input = `
       <head>
         <meta charset="UTF-8" />
@@ -84,6 +92,10 @@ class ViewEntry extends HTMLElement {
       </body>
     `;
 
+    /**
+     * HTML code for view mode of an entry.
+     * @type String
+     */
     this.view = `
       <head>
           <meta charset="UTF-8" />
@@ -144,10 +156,16 @@ class ViewEntry extends HTMLElement {
     this.innerHTML = this.input;
   }
 
-  // testing methods
+  /**
+   * switch to view mode
+   */
   toView() {
     this.innerHTML = this.view;
   }
+
+  /**
+   * switch to input mode
+   */
   toInput() {
     this.innerHTML = this.input;
   }

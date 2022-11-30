@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: main/view-entry/view-entry.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: main/view-entry/view-entry.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Entry page that has input mode and view mode.
+ */
+class ViewEntry extends HTMLElement {
+  constructor() {
+    super();
+    
+    /**
+     * HTML code for input mode of an entry.
+     * @type String
+     */
+    this.input = `
+      &lt;head>
+        &lt;meta charset="UTF-8" />
+        &lt;title>Input Mode&lt;/title>
+        &lt;link rel="stylesheet" href="./app/main/view-entry/input-mode.css" />
+        &lt;link
+          href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&amp;display=swap"
+          rel="stylesheet"
+        />
+        &lt;script src="./app/shared/navbar/navbar.js" type="text/javascript">&lt;/script>
+      &lt;/head>
+      &lt;body>
+        &lt;main>
+          &lt;navbar-component id = "navbar">&lt;/navbar-component>
+          &lt;div id = "main_flexbox">
+            &lt;h2 id="title">Input Entry&lt;/h2>
+            &lt;div class = "main_flexbox_child">
+              &lt;h3>Workout Type&lt;/h3>
+              &lt;input
+                type="text"
+                id="workout_name"
+                placeholder="Enter Workout"
+              />
+            &lt;/div>
+            &lt;div class = "main_flexbox_child">
+              &lt;h3 id = "location_heading">Location&lt;/h3>
+              &lt;input
+                type="text"
+                id="location_input"
+                placeholder="Enter location"
+              />
+            &lt;/div>
+            &lt;div id = "time_flexbox" class = "main_flexbox_child">
+              &lt;div>
+                &lt;h3 class = "time_title">Exercise Dates&lt;/h3>
+                &lt;input
+                  class = "time_input"
+                  type="date"
+                  id="date"
+                />
+              &lt;/div>
+              &lt;div>
+                &lt;h3 class = "time_title">Start Time&lt;/h3>
+                &lt;input
+                  class = "time_input"
+                  type="time"
+                  id="start_time"
+                />
+              &lt;/div>
+              &lt;div>
+                &lt;h3 class = "time_title">End Time&lt;/h3>
+                &lt;input
+                  class = "time_input"
+                  type="time"
+                  id="end_time"
+                />
+              &lt;/div>
+            &lt;/div>
+            &lt;div class = "main_flexbox_child">
+              &lt;h3 id = "intensity_title">Intensity (1 to 5)&lt;/h3>
+              &lt;input
+                type="number"
+                id = "intensity_input"
+                min="1"
+                max="5"
+              />
+            &lt;/div>
+            &lt;div class = "main_flexbox_child">
+              &lt;h3 id = "note_title">Note&lt;/h3>
+              &lt;textarea>
+              &lt;/textarea>
+            &lt;/div>
+            &lt;div class = "main_flexbox_child">
+              &lt;div id = "buttons_div">
+                &lt;button id = "cancel_button">Cancel&lt;/button>
+                &lt;button id = "save_button">Save&lt;/button>
+              &lt;/div>
+            &lt;/div>
+          &lt;/div>
+        &lt;/main>
+      &lt;/body>
+    `;
+
+    /**
+     * HTML code for view mode of an entry.
+     * @type String
+     */
+    this.view = `
+      &lt;head>
+          &lt;meta charset="UTF-8" />
+          &lt;title>View Mode&lt;/title>
+          &lt;link rel="stylesheet" href="./app/main/view-entry/view-mode.css" />
+          &lt;link
+              href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&amp;display=swap"
+              rel="stylesheet"
+          />
+          &lt;script src="./app/shared/navbar/navbar.js" type="text/javascript">&lt;/script>
+      &lt;/head>
+      &lt;body>
+        &lt;main>
+          &lt;navbar-component id = "navbar">&lt;/navbar-component>
+          &lt;div id = "main_flexbox">
+            &lt;div id = "top_flexbox">
+              &lt;h2 id="back_button">&lt;&lt;/h2>
+              &lt;h2 id="title">Input Entry&lt;/h2>
+              &lt;img src="./assets/edit-entry-icon.svg" alt="Edit Mode" id="edit_button">
+            &lt;/div>
+            &lt;div class = "main_flexbox_child">
+              &lt;h3>Workout Type&lt;/h3>
+              &lt;h4 id = "workout_value">Soccer&lt;/h4>
+            &lt;/div>
+            &lt;div class = "main_flexbox_child">
+              &lt;h3 id = "location_heading">Location&lt;/h3>
+              &lt;h4 id = "location_value">John Muir Field&lt;/h4>
+            &lt;/div>
+            &lt;div id = "time_flexbox" class = "main_flexbox_child">
+              &lt;div>
+                &lt;h3 class = "time_title">Exercise Dates&lt;/h3>
+                &lt;h4 id = "dates_value" class = "time_flexbox_value">11/16/2022&lt;/h4>
+              &lt;/div>
+              &lt;div>
+                &lt;h3 class = "time_title">Start Time&lt;/h3>
+                &lt;h4 id="start_time" class = "time_flexbox_value">11:00 AM&lt;/h4>
+                &lt;/div>
+              &lt;div>
+                &lt;h3 class = "time_title">End Time&lt;/h3>
+                &lt;h4 id="end_time" class = "time_flexbox_value">1:00 PM&lt;/h4>
+              &lt;/div>
+            &lt;/div>
+            &lt;div class = "main_flexbox_child">
+              &lt;h3 id = "intensity_title">Intensity (1 to 5)&lt;/h3>
+              &lt;h4 id="intensity_value">5 - Most Intense&lt;/h4>
+            &lt;/div>
+            &lt;div class = "main_flexbox_child">
+              &lt;h3 id = "note_title">Note&lt;/h3>
+              &lt;h4 id="note_value">I feel like I was in great form today&lt;/h4>
+            &lt;/div>
+          &lt;/div>
+        &lt;/main>
+      &lt;/body>
+    `;
+  }
+
+  connectedCallback() {
+    this.innerHTML = this.input;
+  }
+
+  /**
+   * switch to view mode
+   */
+  toView() {
+    this.innerHTML = this.view;
+  }
+
+  /**
+   * switch to input mode
+   */
+  toInput() {
+    this.innerHTML = this.input;
+  }
+}
+
+customElements.define('view-entry-page', ViewEntry);
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="EntryItem.html">EntryItem</a></li><li><a href="ViewEntry.html">ViewEntry</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addEntryEvent">addEntryEvent</a></li><li><a href="global.html#createEntryItem">createEntryItem</a></li><li><a href="global.html#getAllEntries">getAllEntries</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Tue Nov 29 2022 16:00:14 GMT-0800 (北美太平洋标准时间)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
