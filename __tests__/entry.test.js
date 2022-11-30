@@ -1,5 +1,5 @@
-import { entryEntity } from './entry.entity.js';
-import { mockLocalStorage } from './setupTests.js';
+import { entryEntity } from '../app/core/entry.entity.js';
+import { mockLocalStorage } from '../setup/mock-localstorage.js';
 
 /**
  * Entry Entity Tests
