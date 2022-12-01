@@ -3,8 +3,6 @@ class Home extends HTMLElement {
     super();
   }
 
-  // functions = require('../../core/entry.entity');
-
   connectedCallback() {
     this.innerHTML = `
       <head>
