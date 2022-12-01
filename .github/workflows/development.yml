@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: npm ci
-      - run: npm run test-unit
+      - run: npm run unit-test
 
   e2e-test:
     name: 'End-to-End Tests'
@@ -26,4 +26,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: npm ci
-      - run: npm run test-e2e
+      - run: npm run e2e-test
