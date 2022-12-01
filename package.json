@@ -2,7 +2,9 @@
   "scripts": {
     "lint": "npx eslint",
     "prepare": "husky install",
-    "test": "jest",
+    "test": "npm run test-unit; npm run test-e2e",
+    "test-unit": "jest '__tests__/unit/*'",
+    "test-e2e": "jest  '__tests__/e2e/*'",
     "prettier": "npx prettier --write ."
   },
   "jest": {
