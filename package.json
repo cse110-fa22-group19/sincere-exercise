@@ -3,6 +3,8 @@
     "lint": "npx eslint",
     "prepare": "husky install",
     "test": "jest",
+    "unit-test": "jest '__tests__/unit/*'",
+    "e2e-test": "jest '__tests__/e2e/*'",
     "prettier": "npx prettier --write ."
   },
   "jest": {

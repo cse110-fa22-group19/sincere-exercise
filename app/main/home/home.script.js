@@ -56,10 +56,8 @@ function createEntryItem(entry) {
     viewEntryPage.setAttribute('data', JSON.stringify(entry));
     const parentNode = homePage.parentNode;
     parentNode.replaceChild(viewEntryPage, homePage);
-    
-
   });
-  
+
   entryList.appendChild(entryItem);
 }
 
@@ -67,7 +65,7 @@ function createEntryItem(entry) {
  * Switches Input Entry Page with View Entry Page
  * @param {Entry} entry - the entry object to set attribute of
  */
- function routeToInputPage(entry) {
+function routeToInputPage(entry) {
   const homePage = document.querySelector('home-page');
   const inputEntryPage = document.createElement('input-entry-page');
   inputEntryPage.setAttribute('data', JSON.stringify(entry));

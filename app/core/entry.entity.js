@@ -87,7 +87,7 @@ entryEntity.deleteEntry = (__id) => {
  * Populate the entry page with the user input, assign new id and update the all
  * entries by passing them in this function
  * @param {Entry} entry - Pass the entry objects that we want to update
- * @returns {Entry | null} - if updated correctly, the function will return the entry 
+ * @returns {Entry | null} - if updated correctly, the function will return the entry
  * that has been updated, if failed, it will return null
  */
 entryEntity.updateEntry = (entry) => {

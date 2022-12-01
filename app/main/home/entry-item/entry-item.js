@@ -51,12 +51,10 @@ class EntryItem extends HTMLElement {
       event.stopPropagation();
     });
 
-    this.querySelector('div').addEventListener('click', () =>{
+    this.querySelector('div').addEventListener('click', () => {
       const navToView = new Event('navToView');
       this.dispatchEvent(navToView);
     });
-
- 
   }
 }
 

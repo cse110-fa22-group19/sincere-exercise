@@ -119,7 +119,7 @@ class InputEntry extends HTMLElement {
       const cancelInputEntry = new Event('cancelInputEntry');
       cancelInputEntry.data = newEntry;
       this.dispatchEvent(cancelInputEntry);
-    })
+    });
 
     this.querySelector('#save-button').addEventListener('click', () => {
       // grab all data
