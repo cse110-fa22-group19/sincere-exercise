@@ -26,6 +26,7 @@ function addEntryEvent() {
   newEntryButton.addEventListener('addNewEntry', () => {
     const newEntryEntity = entryEntity.createEntry();
     createEntryItem(newEntryEntity);
+    routeToInputPage(newEntryEntity);
   });
 }
 
@@ -48,13 +49,27 @@ function createEntryItem(entry) {
 
   //Adds Navigation from entry item to viewpage
   entryItem.addEventListener('navToView', () => {
+    // get current id
     const homePage = document.querySelector('home-page');
     const viewEntryPage = document.createElement('view-entry-page');
-    viewEntryPage.setAttribute("id","viewEntry");
+    // function x(id) to fill out page
+    viewEntryPage.setAttribute('data', JSON.stringify(entry));
     const parentNode = homePage.parentNode;
     parentNode.replaceChild(viewEntryPage, homePage);
     
+
   });
   
   entryList.appendChild(entryItem);
+}
+
+/**
+ * Switches Input Entry Page with View Entry Page
+ * @param {Entry} entry - the entry object to set attribute of
+ */
+ function routeToInputPage(entry) {
+  const homePage = document.querySelector('home-page');
+  const inputEntryPage = document.createElement('input-entry-page');
+  inputEntryPage.setAttribute('data', JSON.stringify(entry));
+  homePage.replaceWith(inputEntryPage);
 }

@@ -74,20 +74,20 @@ button {
   flex-direction: row;
   gap: 10%;
 }
-#cancel_button {
+#cancel-button {
   margin-left: 35%;
   color: #4442c0;
   background-color: white;
 }
-#cancel_button:hover {
+#cancel-button:hover {
   cursor: pointer;
   font-style: oblique;
 }
-#save_button {
+#save-button {
   color: white;
   background-color: #4442c0;
 }
-#save_button:hover {
+#save-button:hover {
   cursor: pointer;
   font-style: oblique;
 }

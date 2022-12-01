@@ -135,7 +135,7 @@ describe('Create and update entries flow', () => {
       intensity: 3,
       note: 'This was a pretty long match, so I ended up running a lot.',
     };
-    expect(entryEntity.updateEntry(testEntry)).toBe(-1);
+    expect(entryEntity.updateEntry(testEntry)).toBe(null);
   });
 
   beforeAll(() => {
@@ -176,7 +176,7 @@ describe('Create and update entries flow', () => {
       note: 'This was a pretty long match, so I ended up running a lot.',
     };
 
-    expect(entryEntity.updateEntry(testEntry)).toBe(-1);
+    expect(entryEntity.updateEntry(testEntry)).toBe(null);
   });
 });
 
