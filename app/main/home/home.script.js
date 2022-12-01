@@ -48,12 +48,15 @@ function createEntryItem(entry) {
 
   //Adds Navigation from entry item to viewpage
   entryItem.addEventListener('navToView', () => {
+    // get current id
     const homePage = document.querySelector('home-page');
     const viewEntryPage = document.createElement('view-entry-page');
-    viewEntryPage.setAttribute("id","viewEntry");
+    // function x(id) to fill out page
+    viewEntryPage.setAttribute('data', JSON.stringify(entry));
     const parentNode = homePage.parentNode;
     parentNode.replaceChild(viewEntryPage, homePage);
     
+
   });
   
   entryList.appendChild(entryItem);
