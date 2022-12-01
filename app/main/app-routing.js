@@ -7,7 +7,7 @@
  * @param {Node} currentPage - the current page node to route out of
  * @param {Entry} entry - the entry object to set attribute of
  */
-export function routeToViewEntryPage(currentPage, entry) {
+function routeToViewEntryPage(currentPage, entry) {
   const viewEntryPage = document.createElement('view-entry-page');
   viewEntryPage.setAttribute('data', JSON.stringify(entry));
   currentPage.replaceWith(viewEntryPage);
@@ -18,7 +18,7 @@ export function routeToViewEntryPage(currentPage, entry) {
  * @param {Node} currentPage - the current page node to route out of
  * @param {Entry} entry - the entry object to set attribute of
  */
-export function routeToInputEntryPage(currentPage, entry) {
+function routeToInputEntryPage(currentPage, entry) {
   const inputEntryPage = document.createElement('input-entry-page');
   inputEntryPage.setAttribute('data', JSON.stringify(entry));
   currentPage.replaceWith(inputEntryPage);
@@ -29,7 +29,7 @@ export function routeToInputEntryPage(currentPage, entry) {
  * @param {Node} currentPage - the current page node to route out of
  * @param {Entry} entry - the entry object to set attribute of
  */
-export function routeToHomePage(currentPage, entry) {
+function routeToHomePage(currentPage, entry) {
   const homePage = document.createElement('home-entry-page');
   currentPage.replaceWith(inputPage);
 }

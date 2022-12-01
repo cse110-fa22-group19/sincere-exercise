@@ -7,7 +7,8 @@ window.addEventListener('inputEntryPageLoaded', () => {
 });
 
 function cancelUpdateEntryEvent() {
-  document.querySelector('input-entry-page').addEventListener('cancelInputEntry', (event) => {
+  const entryInputPage = document.querySelector('input-entry-page');
+  entryInputPage.addEventListener('cancelInputEntry', (event) => {
     const newEntry = event.data;
     routeToViewPage(newEntry);
   });
@@ -17,21 +18,13 @@ function cancelUpdateEntryEvent() {
  * Updates the currently view entry
  */
 function updateEntryEvent() {
-  document.addEventListener('saveEntry', (event) => {
+  const entryInputPage = document.querySelector('input-entry-page');
+  entryInputPage.addEventListener('saveEntry', (event) => {
     const newEntry = event.data;
-    updateEntryItem(newEntry);
+    console.log('new entry', newEntry);
+    entryEntity.updateEntry(newEntry);
+    routeToViewPage(newEntry);
   });
-}
-
-/**
- * Updates the entry with the new entry using the newEntry's __id value
- * If newEntry DNE in database, don't update the dom.
- * @param {Entry} newEntry - the new entry value to update to
- */
-function updateEntryItem(newEntry) {
-  entryEntity.updateEntry(newEntry);
-  // replace child from input entry to view entry
-  routeToViewPage(newEntry);
 }
 
 /**

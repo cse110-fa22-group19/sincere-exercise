@@ -6,6 +6,31 @@ class InputEntry extends HTMLElement {
   // Entry Entity object to be stored here
   entryData = {};
 
+  /**
+   * Grabs all inputted data from HTML elements and returns the entry data object
+   * @returns {Entry} - entry object with the new data grabbed from HTML
+   */
+  collectInputData() {
+    const workoutName = document.getElementById('workout-name').value;
+    const locationName = document.getElementById('location-name').value;
+    const exercisedate = document.getElementById('exercise-date').value; // yyyy-mm-dd
+    const startTime = document.getElementById('start-time').value; // hh:mm
+    const endTime = document.getElementById('end-time').value; // hh:mm
+    const intensity = document.getElementById('intensity').value;
+    const note = document.getElementById('note').value;
+
+    // Entry object
+    return {
+      __id: this.entryData.__id,
+      workoutType: workoutName,
+      location: locationName,
+      startTime: new Date(`${exercisedate} ${startTime}`).toJSON(),
+      endTime: new Date(`${exercisedate} ${endTime}`).toJSON(),
+      intensity: +intensity,
+      note: note,
+    };
+  }
+
   connectedCallback() {
     this.entryData = JSON.parse(this.getAttribute('data'));
 
@@ -24,7 +49,7 @@ class InputEntry extends HTMLElement {
               <h3>Workout Type</h3>
               <input
                 type="text"
-                id="workout_name"
+                id="workout-name"
                 placeholder="Enter Workout"
               />
             </div>
@@ -32,17 +57,17 @@ class InputEntry extends HTMLElement {
               <h3 id = "location_heading">Location</h3>
               <input
                 type="text"
-                id="location_input"
+                id="location-name"
                 placeholder="Enter location"
               />
             </div>
             <div id = "time_flexbox" class = "main_flexbox_child">
               <div>
-                <h3 class = "time_title">Exercise Dates</h3>
+                <h3 class = "time_title">Exercise Date</h3>
                 <input
                   class = "time_input"
                   type="date"
-                  id="date"
+                  id="exercise-date"
                 />
               </div>
               <div>
@@ -50,7 +75,7 @@ class InputEntry extends HTMLElement {
                 <input
                   class = "time_input"
                   type="time"
-                  id="start_time"
+                  id="start-time"
                 />
               </div>
               <div>
@@ -58,7 +83,7 @@ class InputEntry extends HTMLElement {
                 <input
                   class = "time_input"
                   type="time"
-                  id="end_time"
+                  id="end-time"
                 />
               </div>
             </div>
@@ -66,15 +91,14 @@ class InputEntry extends HTMLElement {
               <h3 id = "intensity_title">Intensity (1 to 5)</h3>
               <input
                 type="number"
-                id = "intensity_input"
+                id = "intensity"
                 min="1"
                 max="5"
               />
             </div>
             <div class = "main_flexbox_child">
               <h3 id = "note_title">Note</h3>
-              <textarea>
-              </textarea>
+              <textarea id="note"></textarea>
             </div>
             <div class = "main_flexbox_child">
               <div id = "buttons_div">
@@ -98,7 +122,8 @@ class InputEntry extends HTMLElement {
     })
 
     this.querySelector('#save-button').addEventListener('click', () => {
-      const newEntry = this.entryData;
+      // grab all data
+      const newEntry = this.collectInputData();
       const saveEntry = new Event('saveEntry');
       saveEntry.data = newEntry;
       this.dispatchEvent(saveEntry);

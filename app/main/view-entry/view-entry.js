@@ -5,6 +5,30 @@ class ViewEntry extends HTMLElement {
 
   entryData = {};
 
+  /**
+   * Takes in a JSON Stringified Date object and returns a formatted string
+   * of a date
+   * @param {string} dateString - JSONed string of the date object
+   */
+  formatDate(dateString) {
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat('en-US', {
+      dateStyle: 'long',
+    }).format(date);
+  }
+
+  /**
+   * Takes in a JSON Stringified Date object and returns a formatted string
+   * of a date
+   * @param {string} dateString - JSONed string of the date object
+   */
+  formatTime(dateString) {
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat('en-US', {
+      timeStyle: 'short',
+    }).format(date);
+  }
+
   connectedCallback() {
     // Switch view mode to input mode
     this.entryData = JSON.parse(this.getAttribute('data'));
@@ -39,16 +63,16 @@ class ViewEntry extends HTMLElement {
           </div>
           <div id = "time_flexbox" class = "main_flexbox_child">
             <div>
-              <h3 class = "time_title">Exercise Dates</h3>
-              <h4 id = "dates_value" class = "time_flexbox_value entry_data">SomeDate</h4>
+              <h3 class = "time_title">Exercise Date</h3>
+              <h4 id = "dates_value" class = "time_flexbox_value entry_data">${this.formatDate(this.entryData?.startTime)}</h4>
             </div>
               <div>
                 <h3 class = "time_title">Start Time</h3>
-                <h4 id="start_time" class = "time_flexbox_value entry_data">${this.entryData?.startTime}</h4>
-                </div>
+                <h4 id="start_time" class = "time_flexbox_value entry_data">${this.formatTime(this.entryData?.startTime)}</h4>
+              </div>
               <div>
                 <h3 class = "time_title">End Time</h3>
-                <h4 id="end_time" class = "time_flexbox_value entry_data">${this.entryData?.endTime}</h4>
+                <h4 id="end_time" class = "time_flexbox_value entry_data">${this.formatTime(this.entryData?.endTime)}</h4>
               </div>
             </div>
             <div class = "main_flexbox_child">
