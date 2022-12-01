@@ -13,8 +13,8 @@ describe('Home end to end user flows', () => {
   beforeAll(async () => {
     browser = await puppeteer.launch();
     page = await browser.newPage();
-    console.log('User must have Live Server running on Port 5500');
-    await page.goto('http://localhost:5500');
+    console.log('Running test on GitHub Pages site');
+    await page.goto('https://cse110-fa22-group19.github.io/sincere-exercise/');
     localStorage.clear();
   });
 
@@ -103,6 +103,7 @@ describe('Home end to end user flows', () => {
   });
 
   afterAll(async () => {
+    localStorage.clear();
     await page.close();
     await browser.close();
   });

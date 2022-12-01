@@ -18,4 +18,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: npm ci
-      - run: npm test
+      - run: npm run test-unit
+
+  e2e-test:
+    name: 'End-to-End Tests'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm ci
+      - run: npm run test-e2e
