@@ -31,5 +31,5 @@ function routeToInputEntryPage(currentPage, entry) {
  */
 function routeToHomePage(currentPage, entry) {
   const homePage = document.createElement('home-entry-page');
-  currentPage.replaceWith(inputPage);
+  currentPage.replaceWith(homePage);
 }

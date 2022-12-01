@@ -26,6 +26,7 @@ function addEntryEvent() {
   newEntryButton.addEventListener('addNewEntry', () => {
     const newEntryEntity = entryEntity.createEntry();
     createEntryItem(newEntryEntity);
+    routeToInputPage(newEntryEntity);
   });
 }
 
@@ -60,4 +61,15 @@ function createEntryItem(entry) {
   });
   
   entryList.appendChild(entryItem);
+}
+
+/**
+ * Switches Input Entry Page with View Entry Page
+ * @param {Entry} entry - the entry object to set attribute of
+ */
+ function routeToInputPage(entry) {
+  const homePage = document.querySelector('home-page');
+  const inputEntryPage = document.createElement('input-entry-page');
+  inputEntryPage.setAttribute('data', JSON.stringify(entry));
+  homePage.replaceWith(inputEntryPage);
 }
