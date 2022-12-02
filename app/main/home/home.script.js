@@ -1,8 +1,8 @@
 import { entryEntity } from '../../core/entry.entity.js';
 import { route } from '../app-routing.js';
 
-window.addEventListener('DOMContentLoaded', () => {
-  // Initialization work
+window.addEventListener('homePageLoaded', () => {
+  // On Load work
   getAllEntries();
 
   // Event handlers
@@ -49,15 +49,10 @@ function createEntryItem(entry) {
     }
   });
 
-  //Adds Navigation from entry item to viewpage
-  entryItem.addEventListener('navToView', () => {
-    // get current id
+  // Adds Navigation from entry item to viewpage
+  entryItem.addEventListener('viewEntry', () => {
     const homePage = document.querySelector('home-page');
-    const viewEntryPage = document.createElement('view-entry-page');
-    // function x(id) to fill out page
-    viewEntryPage.setAttribute('data', JSON.stringify(entry));
-    const parentNode = homePage.parentNode;
-    parentNode.replaceChild(viewEntryPage, homePage);
+    route.routeToViewEntryPage(homePage, entry);
   });
 
   entryList.appendChild(entryItem);

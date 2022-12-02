@@ -16,6 +16,9 @@ class Home extends HTMLElement {
         </div>
       </div>
     `;
+
+    const homePageLoaded = new Event('homePageLoaded');
+    window.dispatchEvent(homePageLoaded);
   }
 }
 

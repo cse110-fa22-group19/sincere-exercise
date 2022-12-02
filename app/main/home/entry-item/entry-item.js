@@ -52,8 +52,8 @@ class EntryItem extends HTMLElement {
     });
 
     this.querySelector('div').addEventListener('click', () => {
-      const navToView = new Event('navToView');
-      this.dispatchEvent(navToView);
+      const viewEntry = new Event('viewEntry');
+      this.dispatchEvent(viewEntry);
     });
   }
 }
