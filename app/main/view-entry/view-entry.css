@@ -59,12 +59,12 @@ input {
   margin-left: 30%;
   width: 50%;
 }
-#edit_button {
+#edit-button {
   padding-top: 20%;
   width: 20px;
   height: 20px;
 }
-#edit_button:hover {
+#edit-button:hover {
   cursor: pointer;
 }
 .main_flexbox_child {
@@ -73,6 +73,6 @@ input {
 .time_title {
   width: 100%;
 }
-#back_button {
+#back-button {
   cursor: pointer;
 }

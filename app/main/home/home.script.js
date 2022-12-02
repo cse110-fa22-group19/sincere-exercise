@@ -1,7 +1,8 @@
 import { entryEntity } from '../../core/entry.entity.js';
+import { route } from '../app-routing.js';
 
-window.addEventListener('DOMContentLoaded', () => {
-  // Initialization work
+window.addEventListener('homePageLoaded', () => {
+  // On Load work
   getAllEntries();
 
   // Event handlers
@@ -26,7 +27,8 @@ function addEntryEvent() {
   newEntryButton.addEventListener('addNewEntry', () => {
     const newEntryEntity = entryEntity.createEntry();
     createEntryItem(newEntryEntity);
-    routeToInputPage(newEntryEntity);
+    const homePage = document.querySelector('home-page');
+    route.routeToInputEntryPage(homePage, newEntryEntity);
   });
 }
 
@@ -47,27 +49,11 @@ function createEntryItem(entry) {
     }
   });
 
-  //Adds Navigation from entry item to viewpage
-  entryItem.addEventListener('navToView', () => {
-    // get current id
+  // Adds Navigation from entry item to viewpage
+  entryItem.addEventListener('viewEntry', () => {
     const homePage = document.querySelector('home-page');
-    const viewEntryPage = document.createElement('view-entry-page');
-    // function x(id) to fill out page
-    viewEntryPage.setAttribute('data', JSON.stringify(entry));
-    const parentNode = homePage.parentNode;
-    parentNode.replaceChild(viewEntryPage, homePage);
+    route.routeToViewEntryPage(homePage, entry);
   });
 
   entryList.appendChild(entryItem);
-}
-
-/**
- * Switches Input Entry Page with View Entry Page
- * @param {Entry} entry - the entry object to set attribute of
- */
-function routeToInputPage(entry) {
-  const homePage = document.querySelector('home-page');
-  const inputEntryPage = document.createElement('input-entry-page');
-  inputEntryPage.setAttribute('data', JSON.stringify(entry));
-  homePage.replaceWith(inputEntryPage);
 }

@@ -1,4 +1,5 @@
 import { entryEntity } from '../../core/entry.entity.js';
+import { route } from '../app-routing.js';
 
 window.addEventListener('inputEntryPageLoaded', () => {
   // Event handlers
@@ -7,10 +8,10 @@ window.addEventListener('inputEntryPageLoaded', () => {
 });
 
 function cancelUpdateEntryEvent() {
-  const entryInputPage = document.querySelector('input-entry-page');
-  entryInputPage.addEventListener('cancelInputEntry', (event) => {
+  const inputEntryPage = document.querySelector('input-entry-page');
+  inputEntryPage.addEventListener('cancelInputEntry', (event) => {
     const newEntry = event.data;
-    routeToViewPage(newEntry);
+    route.routeToViewEntryPage(inputEntryPage, newEntry);
   });
 }
 
@@ -18,22 +19,10 @@ function cancelUpdateEntryEvent() {
  * Updates the currently view entry
  */
 function updateEntryEvent() {
-  const entryInputPage = document.querySelector('input-entry-page');
-  entryInputPage.addEventListener('saveEntry', (event) => {
+  const inputEntryPage = document.querySelector('input-entry-page');
+  inputEntryPage.addEventListener('saveEntry', (event) => {
     const newEntry = event.data;
-    console.log('new entry', newEntry);
     entryEntity.updateEntry(newEntry);
-    routeToViewPage(newEntry);
+    route.routeToViewEntryPage(inputEntryPage, newEntry);
   });
-}
-
-/**
- * Switches Input Entry Page with View Entry Page
- * @param {Entry} entry - the entry object to set attribute of
- */
-function routeToViewPage(entry) {
-  const inputPage = document.querySelector('input-entry-page');
-  const viewEntryPage = document.createElement('view-entry-page');
-  viewEntryPage.setAttribute('data', JSON.stringify(entry));
-  inputPage.replaceWith(viewEntryPage);
 }
