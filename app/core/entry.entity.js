@@ -1,5 +1,3 @@
-export const entryEntity = {};
-
 /**
  * Entry Entity
  * Contains the methods for the CRUD functionality of the Entry entity
@@ -15,6 +13,8 @@ export const entryEntity = {};
  *   note: string,
  * }
  */
+
+export const entryEntity = {};
 
 /**
  * Creates a unique id for an entry. Concats the startTime and 5 digit

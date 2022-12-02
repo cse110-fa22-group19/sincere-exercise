@@ -37,21 +37,20 @@ class ViewEntry extends HTMLElement {
     <head>
         <meta charset="UTF-8" />
         <title>View Mode</title>
-        <link rel="stylesheet" href="./app/main/view-entry/view-mode.css" />
+        <link rel="stylesheet" href="./app/main/view-entry/view-entry.css" />
         <link
             href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap"
             rel="stylesheet"
         />
         <script src="./app/shared/navbar/navbar.js" type="text/javascript"></script>
     </head>
-  
     <body>
       <main>
         <div id = "main_flexbox">
           <div id = "top_flexbox">
-            <h2 id="back_button"><</h2>
+            <h2 id="back-button"><</h2>
             <h2 id="title">View Entry</h2>
-            <img src="assets/edit-entry-icon.svg" alt="Edit Mode" id="edit_button">
+            <img src="assets/edit-entry-icon.svg" alt="Edit Mode" id="edit-button">
           </div>
           <div class = "main_flexbox_child">
             <h3>Workout Type</h3>
@@ -102,35 +101,20 @@ class ViewEntry extends HTMLElement {
       </body>
     `;
 
-    let edit = document.getElementById('edit_button');
-    edit.addEventListener('click', (event) => {
-      const viewPage = document.querySelector('view-entry-page');
-      const inputPage = document.createElement('input-entry-page');
-      inputPage.setAttribute('data', JSON.stringify(this.entryData));
-      const parentNode = viewPage.parentNode;
-      parentNode.replaceChild(inputPage, viewPage);
+    const viewEntryPageLoaded = new Event('viewEntryPageLoaded');
+    window.dispatchEvent(viewEntryPageLoaded);
+
+    this.querySelector('#edit-button').addEventListener('click', () => {
+      const editEntry = new Event('editEntry');
+      editEntry.data = this.entryData;
+      this.dispatchEvent(editEntry);
     });
 
-    //Switch View mode to Home page
-    let back = document.getElementById('back_button');
-    back.addEventListener('click', () => {
-      console.log('this button works');
-      const viewPage = document.querySelector('view-entry-page');
-      const homePage = document.createElement('home-page');
-      viewPage.setAttribute('id', 'viewEntry');
-      const parentNode = viewPage.parentNode;
-      parentNode.replaceChild(homePage, viewPage);
-      location.reload();
+    this.querySelector('#back-button').addEventListener('click', () => {
+      console.log('clicked');
+      const backHome = new Event('backHome');
+      this.dispatchEvent(backHome);
     });
-  }
-
-  // testing methods
-  //
-  toView() {
-    this.innerHTML = this.view;
-  }
-  toInput() {
-    this.innerHTML = this.input;
   }
 }
 

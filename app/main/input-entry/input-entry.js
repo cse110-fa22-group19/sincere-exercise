@@ -115,9 +115,8 @@ class InputEntry extends HTMLElement {
     window.dispatchEvent(inputEntryPageLoaded);
 
     this.querySelector('#cancel-button').addEventListener('click', () => {
-      const newEntry = this.entryData;
       const cancelInputEntry = new Event('cancelInputEntry');
-      cancelInputEntry.data = newEntry;
+      cancelInputEntry.data = this.entryData;
       this.dispatchEvent(cancelInputEntry);
     });
 
