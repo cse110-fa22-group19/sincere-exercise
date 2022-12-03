@@ -41,15 +41,14 @@ input {
   display: flex;
   flex-direction: column;
   align-self: center;
-  min-width:2000px;
-  border: 1px solid #000;
+  min-width:1800px;
 }
 #intensity_input {
   width: 10%;
 }
 #time_flexbox {
   display: grid;
-  grid-template-columns: 25% 25% 25%;
+  grid-template-columns: 25% 25% 10%;
   margin-left: 24.3%;
 }
 #navbar {
@@ -70,7 +69,6 @@ input {
   cursor: pointer;
 }
 .main_flexbox_child {
-  display: flex;
   padding-top: 3em;
 }
 .time_title {
