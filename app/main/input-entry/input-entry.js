@@ -76,6 +76,7 @@ class InputEntry extends HTMLElement {
                   class = "time_input"
                   type="time"
                   id="start-time"
+                  defaultValue=""
                 />
               </div>
               <div>

@@ -38,9 +38,11 @@ input {
 }
 #main_flexbox {
   order: 1;
-  margin: 9em;
   display: flex;
   flex-direction: column;
+  align-self: center;
+  min-width:2000px;
+  border: 1px solid #000;
 }
 #intensity_input {
   width: 10%;
@@ -68,6 +70,7 @@ input {
   cursor: pointer;
 }
 .main_flexbox_child {
+  display: flex;
   padding-top: 3em;
 }
 .time_title {
