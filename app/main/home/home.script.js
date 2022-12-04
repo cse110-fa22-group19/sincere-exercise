@@ -1,6 +1,11 @@
 import { entryEntity } from '../../core/entry.entity.js';
 import { route } from '../app-routing.js';
 
+/**
+ * Functions file for all functionalities of the home page. Listens for all
+ * events that can be dispatched in the home page and acts on it.
+ */
+
 window.addEventListener('homePageLoaded', () => {
   // On Load work
   getAllEntries();

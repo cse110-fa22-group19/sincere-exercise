@@ -1,3 +1,6 @@
+/**
+ * The Home page that contains the list of entries saved by the user
+ */
 class Home extends HTMLElement {
   constructor() {
     super();

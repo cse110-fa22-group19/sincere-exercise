@@ -1,3 +1,7 @@
+/**
+ * Button component to add a new entry to the list
+ * Dispatches an 'addNewEntry' event if button is clicked
+ */
 class NewEntryButton extends HTMLElement {
   constructor() {
     super();

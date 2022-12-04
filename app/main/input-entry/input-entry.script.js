@@ -1,6 +1,11 @@
 import { entryEntity } from '../../core/entry.entity.js';
 import { route } from '../app-routing.js';
 
+/**
+ * The file that contains all of the input entry's event handling and
+ * functionality
+ */
+
 window.addEventListener('inputEntryPageLoaded', () => {
   // Event handlers
   cancelUpdateEntryEvent();

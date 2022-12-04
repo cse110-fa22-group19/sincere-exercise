@@ -1,8 +1,13 @@
+/**
+ * View Entry page where users can view all data in an entry.
+ * This allows the user to edit data or go back to the home page.
+ */
 class ViewEntry extends HTMLElement {
   constructor() {
     super();
   }
 
+  // Entry Entity object to be stored here
   entryData = {};
 
   /**

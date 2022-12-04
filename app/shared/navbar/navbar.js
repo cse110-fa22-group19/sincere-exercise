@@ -1,3 +1,6 @@
+/**
+ * NavBar component for the navigation bar at the top of the screen
+ */
 class NavBar extends HTMLElement {
   constructor() {
     super();
