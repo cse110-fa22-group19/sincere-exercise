@@ -25,7 +25,7 @@ describe('View Entry end to end user flows', () => {
     browser = await puppeteer.launch({ headless: false });
     page = await browser.newPage();
     console.log('User must have Live Server running on Port 5500');
-    await page.goto('http://localhost:5500'); // Change it to github link.
+    await page.goto('https://cse110-fa22-group19.github.io/sincere-exercise/');
   });
 
   describe('Navigate between home page and input-entry page', () => {
