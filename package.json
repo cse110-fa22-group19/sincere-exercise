@@ -6,7 +6,7 @@
     "unit-test": "jest '__tests__/unit/*'",
     "e2e-test": "jest '__tests__/e2e/*'",
     "prettier": "npx prettier --write .",
-    "doc": "jsdoc -c jsdoc.json"
+    "doc": "jsdoc -c jsdoc.json ./README.md"
   },
   "jest": {
     "testEnvironment": "jsdom",

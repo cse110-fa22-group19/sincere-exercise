@@ -45,12 +45,18 @@ class EntryItem extends HTMLElement {
       </div>
     `;
 
+    /**
+     * When the X button is clicked, entry should get deleted
+     */
     this.querySelector('button').addEventListener('click', () => {
       const deleteEntry = new Event('deleteEntry');
       this.dispatchEvent(deleteEntry);
       event.stopPropagation();
     });
 
+    /**
+     * When entire entry is clicked, user to be taken to view entry page
+     */
     this.querySelector('div').addEventListener('click', () => {
       const viewEntry = new Event('viewEntry');
       this.dispatchEvent(viewEntry);
