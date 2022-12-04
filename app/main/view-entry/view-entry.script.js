@@ -1,5 +1,10 @@
 import { route } from '../app-routing.js';
 
+/**
+ * The file that contains all of the view entry's event handling and
+ * functionality
+ */
+
 window.addEventListener('viewEntryPageLoaded', () => {
   // Event handlers
   editEntryEvent();
