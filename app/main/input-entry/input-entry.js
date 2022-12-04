@@ -19,7 +19,7 @@ class InputEntry extends HTMLElement {
     const intensity = document.getElementById('intensity').value;
     const note = document.getElementById('note').value;
     
-    const data = {
+    return {
       __id: this.entryData.__id,
       workoutType: workoutName,
       location: locationName,
@@ -28,13 +28,6 @@ class InputEntry extends HTMLElement {
       intensity: +intensity,
       note: note,
     };
-    if (startTime == '') {
-      data[startTime] = '';
-    }
-    if (endTime == '') {
-      data[endTime] = '';
-    }
-    return data;
   }
 
   connectedCallback() {
