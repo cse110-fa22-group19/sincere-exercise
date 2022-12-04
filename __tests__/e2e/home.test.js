@@ -11,10 +11,10 @@ describe('Home end to end user flows', () => {
   let page;
 
   beforeAll(async () => {
-    browser = await puppeteer.launch();
+    browser = await puppeteer.launch({ headless: false });
     page = await browser.newPage();
     console.log('Running test on GitHub Pages site');
-    await page.goto('https://cse110-fa22-group19.github.io/sincere-exercise/');
+    await page.goto('http://127.0.0.1:5500/');
     localStorage.clear();
   });
 
@@ -22,6 +22,10 @@ describe('Home end to end user flows', () => {
     let home;
     let newEntryButtonElement;
     let newEntryButton;
+    let inputEntryPage;
+    let cancel_button;
+    let viewEntryPage;
+    let back_button;
 
     beforeAll(async () => {
       home = await page.$('home-page');
@@ -31,6 +35,16 @@ describe('Home end to end user flows', () => {
 
     test('when click Add New Entry button, new entry item is shown', async () => {
       await newEntryButton.click();
+      inputEntryPage = await page.$('input-entry-page');
+      cancel_button = await page.$('#cancel-button');
+      await cancel_button.click();
+      viewEntryPage = await page.$('view-entry-page');
+      back_button = await page.$('#back-button');
+      await back_button.click();
+      home = await page.$('home-page');
+      newEntryButtonElement = await home.$('new-entry-button');
+      newEntryButton = await newEntryButtonElement.$('button');
+
       const numEntries = await home.$$eval(
         'entry-item-component',
         (entryItems) => entryItems.length
@@ -52,6 +66,15 @@ describe('Home end to end user flows', () => {
     test('when more entries are added, entry count and data are accurate', async () => {
       for (let i = 0; i < 9; i++) {
         await newEntryButton.click();
+        inputEntryPage = await page.$('input-entry-page');
+        cancel_button = await page.$('#cancel-button');
+        await cancel_button.click();
+        viewEntryPage = await page.$('view-entry-page');
+        back_button = await page.$('#back-button');
+        await back_button.click();
+        home = await page.$('home-page');
+        newEntryButtonElement = await home.$('new-entry-button');
+        newEntryButton = await newEntryButtonElement.$('button');
       }
       const numEntries = await home.$$eval(
         'entry-item-component',
