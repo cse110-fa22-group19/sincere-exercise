@@ -11,9 +11,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - run: npm ci
-        with:
-          source: ./
-          destination: ./packages
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
   # Lint repo
