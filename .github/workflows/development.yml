@@ -4,49 +4,41 @@ on:
   push:
 
 jobs:
-  # Build job
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - run: npm ci
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
   # Lint repo
   lint:
     name: 'Lint'
     runs-on: ubuntu-latest
-    needs: build
     steps:
       - uses: actions/checkout@v3
+      - run: npm ci
       - run: npm run lint
 
   # Run Unit Tests
   unit-test:
     name: 'Unit Tests'
     runs-on: ubuntu-latest
-    needs: build
     steps:
       - uses: actions/checkout@v3
+      - run: npm ci
       - run: npm run unit-test
 
   # Run End to End tests
   e2e-test:
     name: 'End-to-End Tests'
     runs-on: ubuntu-latest
-    needs: build
     steps:
       - uses: actions/checkout@v3
+      - run: npm ci
       - run: npm run e2e-test
 
   # Generate documentation
   documentation:
     name: 'Generate Documentation'
     runs-on: ubuntu-latest
-    needs: [build, lint, unit-test, e2e-test]
+    needs: [lint, unit-test, e2e-test]
     steps:
       - uses: actions/checkout@v3
+      - run: npm ci
       - run: npm run doc
       - run: git add .
       - run: git commit -am "Updated documentation"
