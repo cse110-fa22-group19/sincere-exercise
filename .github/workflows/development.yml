@@ -22,16 +22,16 @@ jobs:
       - run: npm ci
       - run: npm run unit-test
 
-  # Run End to End tests
-  # e2e-test:
-  #   name: 'End-to-End Tests'
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - run: npm ci
-  #     - run: npm run e2e-test
+  Run End to End tests
+  e2e-test:
+    name: 'End-to-End Tests'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm ci
+      - run: npm run e2e-test
 
-  # Generate documentation
+  Generate documentation
   documentation:
     runs-on: ubuntu-latest
     steps:
