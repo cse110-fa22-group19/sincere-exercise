@@ -18,8 +18,7 @@ class InputEntry extends HTMLElement {
     const endTime = document.getElementById('end-time').value; // hh:mm
     const intensity = document.getElementById('intensity').value;
     const note = document.getElementById('note').value;
-
-    // Entry object
+    
     return {
       __id: this.entryData.__id,
       workoutType: workoutName || this.entryData.workoutName,
