@@ -1,8 +1,4 @@
-/**
- * Input Entry page where users can input all data in an entry.
- * This allows the user to input new data to a created entry or edit an entry
- * that was previously created.
- */
+
 class InputEntry extends HTMLElement {
   constructor() {
     super();
