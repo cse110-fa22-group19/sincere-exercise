@@ -32,28 +32,29 @@ jobs:
   #     - run: npm run e2e-test
 
   # Generate documentation
-  # documentation:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - run: npm i
-  #     - run: npm run doc
+  documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm i
+      - run: npm run doc
+      - run: ls
   
   # folder:
   #   runs-on: ubuntu-latest
   #   steps:
   #     - run: mkdir out  
 
-  document:
-    name: "crazy doc"
-    runs-on: ubuntu-latest
+  # document:
+  #   name: "crazy doc"
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v2
-      - name: Install JSDoc
-        run: npm install -g jsdoc
-      - name: Generate JSDoc
-        run: jsdoc -r ./src
-      - name: List files in current directory
-        run: ls
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Install JSDoc
+  #       run: npm install -g jsdoc
+  #     - name: Generate JSDoc
+  #       run: jsdoc -r ./src
+  #     - name: List files in current directory
+  #       run: ls
 
