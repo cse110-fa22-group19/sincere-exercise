@@ -1,11 +1,19 @@
 import { dateHelper } from '../date-helper.js';
 
+/**
+ * Input Entry page where users can input all data in an entry.
+ * This allows the user to input new data to a created entry or edit an entry
+ * that was previously created.
+ */
 class InputEntry extends HTMLElement {
   constructor() {
     super();
   }
 
-  // Entry Entity object to be stored here
+  /**
+   * Entry Entity object to be stored here
+   * @type {Entry}
+   */
   entryData = {};
 
   /**
@@ -147,12 +155,19 @@ class InputEntry extends HTMLElement {
     const inputEntryPageLoaded = new Event('inputEntryPageLoaded');
     window.dispatchEvent(inputEntryPageLoaded);
 
+    /**
+     * When cancel button is clicked, user should be taken back to view entry page
+     */
     this.querySelector('#cancel-button').addEventListener('click', () => {
       const cancelInputEntry = new Event('cancelInputEntry');
       cancelInputEntry.data = this.entryData;
       this.dispatchEvent(cancelInputEntry);
     });
 
+    /**
+     * When save button is clicked, the user should be taken back to view entry page
+     * as the entry should be updated with the new data.
+     */
     this.querySelector('#save-button').addEventListener('click', () => {
       // grab all data
       const newEntry = this.collectInputData();

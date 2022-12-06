@@ -14,33 +14,21 @@ describe('Home end to end user flows', () => {
     browser = await puppeteer.launch();
     page = await browser.newPage();
     // Local Testing
-    await page.goto('http://127.0.0.1:5500/');
-    // await page.goto('https://cse110-fa22-group19.github.io/sincere-exercise/');
+    // await page.goto('http://127.0.0.1:5500/');
+    await page.goto('https://cse110-fa22-group19.github.io/sincere-exercise/');
     localStorage.clear();
   });
 
   describe('Create and delete entries', () => {
-    let home;
-    let newEntryButtonElement;
-    let newEntryButton;
-    let inputEntryPage;
-    let cancel_button;
-    let viewEntryPage;
-    let back_button;
-
-    beforeAll(async () => {
-      home = await page.$('home-page');
-      newEntryButtonElement = await home.$('new-entry-button');
-      newEntryButton = await newEntryButtonElement.$('button');
-    });
-
     test('when click cancel adding new entry button, entry is still shown', async () => {
-      await newEntryButton.click();
-      cancel_button = await page.$('#cancel-button');
+      const newEntryButtonElement = await page.$('new-entry-button');
+      await newEntryButtonElement.click();
+      const cancel_button = await page.$('#cancel-button');
       await cancel_button.click();
-      back_button = await page.$('#back-button');
+      const view = await page.$('view-entry-page');
+      const back_button = await view.$('#back-button');
       await back_button.click();
-      const numEntries = await home.$$eval(
+      const numEntries = await page.$$eval(
         'entry-item-component',
         (entryItems) => entryItems.length
       );
@@ -48,7 +36,7 @@ describe('Home end to end user flows', () => {
     });
 
     test('if new entry item contains accurate entry data', async () => {
-      const entryItemData = await home.$eval(
+      const entryItemData = await page.$eval(
         'entry-item-component',
         (entryItem) => entryItem.entryData
       );
@@ -60,11 +48,12 @@ describe('Home end to end user flows', () => {
 
     test('when more entries are added, entry count and data are accurate', async () => {
       for (let i = 0; i < 9; i++) {
-        newEntryButtonElement = await page.$('new-entry-button');
+        const home = await page.$('home-page');
+        const newEntryButtonElement = await home.$('new-entry-button');
         await newEntryButtonElement.click();
-        cancel_button = await page.$('#cancel-button');
+        const cancel_button = await page.$('#cancel-button');
         await cancel_button.click();
-        back_button = await page.$('#back-button');
+        const back_button = await page.$('#back-button');
         await back_button.click();
       }
       const numEntries = await page.$$eval(
