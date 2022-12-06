@@ -22,12 +22,16 @@ class InputEntry extends HTMLElement {
     // Entry object
     return {
       __id: this.entryData.__id,
-      workoutType: workoutName,
-      location: locationName,
-      startTime: new Date(`${exercisedate} ${startTime}`).toJSON(),
-      endTime: new Date(`${exercisedate} ${endTime}`).toJSON(),
-      intensity: +intensity,
-      note: note,
+      workoutType: workoutName || this.entryData.workoutName,
+      location: locationName || this.entryData.location,
+      startTime: startTime
+        ? new Date(`${exercisedate} ${startTime}`).toJSON()
+        : this.entryData.startTime,
+      endTime: endTime
+        ? new Date(`${exercisedate} ${endTime}`).toJSON()
+        : this.entryData.endTime,
+      intensity: +intensity || this.entryData.intensity,
+      note: note || this.entryData.note,
     };
   }
 
