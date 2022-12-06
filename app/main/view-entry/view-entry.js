@@ -74,7 +74,7 @@ class ViewEntry extends HTMLElement {
               <h3 id = "intensity_title">Intensity (1 to 5)</h3>
               <h4 id="intensity_value" class = "entry_data">${
                 this.entryData?.intensity
-              } </h4>
+              }</h4>
             </div>
             <div class = "main_flexbox_child">
               <h3 id = "note_title">Note</h3>
