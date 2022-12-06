@@ -39,23 +39,21 @@ jobs:
   #     - run: npm i
   #     - run: npm run doc
   
-  # document:
-  #   name: "crazy doc"
+  # folder:
   #   runs-on: ubuntu-latest
-
   #   steps:
-  #     - uses: actions/checkout@v2
-  #     - name: Install JSDoc
-  #       run: npm install -g jsdoc
-  #     - name: Generate JSDoc
-  #       run: jsdoc -r ./
+  #     - run: mkdir out  
 
-  build:
+  document:
+    name: "crazy doc"
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Create folder
-        run: |
-          mkdir -p myNewFolder/myNewSubFolder && cp -R dist myNewFolder/myNewSubFolder
-          ls myNewFolder/MyNewSubFolder
+      - uses: actions/checkout@v2
+      - name: Install JSDoc
+        run: npm install -g jsdoc
+      - name: Generate JSDoc
+        run: jsdoc -r src
+      - name: List files in current directory
+        run: ls
+
