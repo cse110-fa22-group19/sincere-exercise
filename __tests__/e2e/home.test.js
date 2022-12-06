@@ -11,7 +11,7 @@ describe('Home end to end user flows', () => {
   let page;
 
   beforeAll(async () => {
-    browser = await puppeteer.launch({ headless: false });
+    browser = await puppeteer.launch();
     page = await browser.newPage();
     console.log('Running test on GitHub Pages site');
     await page.goto('https://cse110-fa22-group19.github.io/sincere-exercise/');

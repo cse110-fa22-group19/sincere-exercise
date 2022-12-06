@@ -22,7 +22,7 @@ describe('View Entry end to end user flows', () => {
   let page;
 
   beforeAll(async () => {
-    browser = await puppeteer.launch({ headless: false });
+    browser = await puppeteer.launch();
     page = await browser.newPage();
     console.log('User must have Live Server running on Port 5500');
     await page.goto('https://cse110-fa22-group19.github.io/sincere-exercise/');
