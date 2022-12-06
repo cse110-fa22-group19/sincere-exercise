@@ -22,6 +22,7 @@ function updateEntryEvent() {
   const inputEntryPage = document.querySelector('input-entry-page');
   inputEntryPage.addEventListener('saveEntry', (event) => {
     const newEntry = event.data;
+    console.log('Entry after clicked save entry', newEntry);
     entryEntity.updateEntry(newEntry);
     route.routeToViewEntryPage(inputEntryPage, newEntry);
   });

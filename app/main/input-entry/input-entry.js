@@ -1,3 +1,5 @@
+import { dateHelper } from '../date-helper.js';
+
 class InputEntry extends HTMLElement {
   constructor() {
     super();
@@ -13,11 +15,15 @@ class InputEntry extends HTMLElement {
   collectInputData() {
     const workoutType = document.getElementById('workout-name').value.trim();
     const locationName = document.getElementById('location-name').value.trim();
-    const exercisedate = document.getElementById('exercise-date').value.trim(); // yyyy-mm-dd
-    const startTime = document.getElementById('start-time').value.trim(); // hh:mm
-    const endTime = document.getElementById('end-time').value.trim(); // hh:mm
+    const exercisedate = document.getElementById('exercise-date').value; // yyyy-mm-dd
+    const startTime = document.getElementById('start-time').value; // hh:mm
+    const endTime = document.getElementById('end-time').value; // hh:mm
     const intensity = document.getElementById('intensity').value.trim();
     const note = document.getElementById('note').value.trim();
+
+    console.log(exercisedate);
+    console.log(new Date(`${exercisedate} ${startTime}`));
+    console.log(new Date(`${exercisedate} ${startTime}`).toJSON());
 
     // For each property, if the entry inputted is empty, don't save value
     return {
@@ -48,30 +54,6 @@ class InputEntry extends HTMLElement {
     return !isNaN(newValue) && 1 <= +newValue && +newValue <= 5
       ? +newValue
       : intensity;
-  }
-
-  /**
-   * Takes in a JSON Stringified Date object and returns a formatted string
-   * of a date
-   * @param {string} dateString - JSONed string of the date object
-   */
-  formatDate(dateString) {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat('en-US', {
-      dateStyle: 'long',
-    }).format(date);
-  }
-
-  /**
-   * Takes in a JSON Stringified Date object and returns a formatted string
-   * of a date
-   * @param {string} dateString - JSONed string of the date object
-   */
-  formatTime(dateString) {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat('en-US', {
-      timeStyle: 'short',
-    }).format(date);
   }
 
   connectedCallback() {
@@ -113,7 +95,9 @@ class InputEntry extends HTMLElement {
                   class = "time_input"
                   type="date"
                   id="exercise-date"
-                  value="${this.formatDate(this.entryData?.startTime)}"
+                  value="${dateHelper.formatDateValue(
+                    this.entryData?.startTime
+                  )}"
                 />
               </div>
               <div>
@@ -122,7 +106,9 @@ class InputEntry extends HTMLElement {
                   class = "time_input"
                   type="time"
                   id="start-time"
-                  value="${this.formatTime(this.entryData?.startTime)}"
+                  value="${dateHelper.formatTimeValue(
+                    this.entryData?.startTime
+                  )}"
                 />
               </div>
               <div>
@@ -131,7 +117,7 @@ class InputEntry extends HTMLElement {
                   class = "time_input"
                   type="time"
                   id="end-time"
-                  value="${this.entryData?.endTime}"
+                  value="${dateHelper.formatTimeValue(this.entryData?.endTime)}"
                 />
               </div>
             </div>
