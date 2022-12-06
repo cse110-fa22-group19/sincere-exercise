@@ -35,5 +35,6 @@ jobs:
   documentation:
     runs-on: ubuntu-latest
     steps:
+      - run: cd ./sincere-exercise
       - run: npm i
       - run: npm run doc
