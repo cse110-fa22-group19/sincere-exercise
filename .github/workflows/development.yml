@@ -41,7 +41,7 @@ jobs:
       - run: ls
       - run: |
           git add --all
-          git commit -m 
+          git commit -m "Generate JSdoc"
           git push
   
   # folder:
