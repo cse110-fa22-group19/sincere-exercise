@@ -32,10 +32,13 @@ jobs:
   #     - run: npm run e2e-test
 
   # Generate documentation
-  documentation:
-    runs-on: ubuntu-latest
+  # documentation:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - run: npm i
+  #     - run: npm run doc
+  
+  folder:
     steps:
-      - uses: actions/checkout@v3
-      - run: npm i
-      - run: npm run doc
       - run: mkdir -p out
