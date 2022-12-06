@@ -40,6 +40,6 @@ jobs:
   #     - run: npm run doc
   
   folder:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
-      - run: mkdir -p out
+      - run: mkdir out
