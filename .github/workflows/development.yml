@@ -34,10 +34,11 @@ jobs:
   # Generate documentation
   documentation:
     runs-on: ubuntu-latest
-    name: Build
-    uses: andstor/jsdoc-action@v1
-    with:
-      source_dir: ./
-      recurse: true
-      config_file: jsdoc.json
-      front_page: README.md
+    steps:
+      - name: Build
+        uses: andstor/jsdoc-action@v1
+        with:
+          source_dir: ./
+          recurse: true
+          config_file: jsdoc.json
+          front_page: README.md
