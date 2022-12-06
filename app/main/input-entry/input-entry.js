@@ -50,6 +50,30 @@ class InputEntry extends HTMLElement {
       : intensity;
   }
 
+  /**
+   * Takes in a JSON Stringified Date object and returns a formatted string
+   * of a date
+   * @param {string} dateString - JSONed string of the date object
+   */
+  formatDate(dateString) {
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat('en-US', {
+      dateStyle: 'long',
+    }).format(date);
+  }
+
+  /**
+   * Takes in a JSON Stringified Date object and returns a formatted string
+   * of a date
+   * @param {string} dateString - JSONed string of the date object
+   */
+  formatTime(dateString) {
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat('en-US', {
+      timeStyle: 'short',
+    }).format(date);
+  }
+
   connectedCallback() {
     this.entryData = JSON.parse(this.getAttribute('data'));
 
@@ -70,6 +94,7 @@ class InputEntry extends HTMLElement {
                 type="text"
                 id="workout-name"
                 placeholder="Enter Workout"
+                value="${this.entryData?.workoutType}"
               />
             </div>
             <div class = "main_flexbox_child">
@@ -78,6 +103,7 @@ class InputEntry extends HTMLElement {
                 type="text"
                 id="location-name"
                 placeholder="Enter location"
+                value="${this.entryData?.location}"
               />
             </div>
             <div id = "time_flexbox" class = "main_flexbox_child">
@@ -87,6 +113,7 @@ class InputEntry extends HTMLElement {
                   class = "time_input"
                   type="date"
                   id="exercise-date"
+                  value="${this.formatDate(this.entryData?.startTime)}"
                 />
               </div>
               <div>
@@ -95,6 +122,7 @@ class InputEntry extends HTMLElement {
                   class = "time_input"
                   type="time"
                   id="start-time"
+                  value="${this.formatTime(this.entryData?.startTime)}"
                 />
               </div>
               <div>
@@ -103,6 +131,7 @@ class InputEntry extends HTMLElement {
                   class = "time_input"
                   type="time"
                   id="end-time"
+                  value="${this.entryData?.endTime}"
                 />
               </div>
             </div>
@@ -113,6 +142,7 @@ class InputEntry extends HTMLElement {
                 id = "intensity"
                 min="1"
                 max="5"
+                value="${this.entryData?.intensity}"
               />
             </div>
             <div class = "main_flexbox_child">
