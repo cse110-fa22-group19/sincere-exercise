@@ -11,10 +11,11 @@ describe('Home end to end user flows', () => {
   let page;
 
   beforeAll(async () => {
-    browser = await puppeteer.launch({ headless: false });
+    browser = await puppeteer.launch();
     page = await browser.newPage();
-    console.log('Running test on GitHub Pages site');
-    await page.goto('https://cse110-fa22-group19.github.io/sincere-exercise/');
+    // Local Testing
+    await page.goto('http://127.0.0.1:5500/');
+    // await page.goto('https://cse110-fa22-group19.github.io/sincere-exercise/');
     localStorage.clear();
   });
 
@@ -33,18 +34,12 @@ describe('Home end to end user flows', () => {
       newEntryButton = await newEntryButtonElement.$('button');
     });
 
-    test('when click Add New Entry button, new entry item is shown', async () => {
+    test('when click cancel adding new entry button, entry is still shown', async () => {
       await newEntryButton.click();
-      inputEntryPage = await page.$('input-entry-page');
       cancel_button = await page.$('#cancel-button');
       await cancel_button.click();
-      viewEntryPage = await page.$('view-entry-page');
       back_button = await page.$('#back-button');
       await back_button.click();
-      home = await page.$('home-page');
-      newEntryButtonElement = await home.$('new-entry-button');
-      newEntryButton = await newEntryButtonElement.$('button');
-
       const numEntries = await home.$$eval(
         'entry-item-component',
         (entryItems) => entryItems.length
@@ -65,22 +60,18 @@ describe('Home end to end user flows', () => {
 
     test('when more entries are added, entry count and data are accurate', async () => {
       for (let i = 0; i < 9; i++) {
-        await newEntryButton.click();
-        inputEntryPage = await page.$('input-entry-page');
+        newEntryButtonElement = await page.$('new-entry-button');
+        await newEntryButtonElement.click();
         cancel_button = await page.$('#cancel-button');
         await cancel_button.click();
-        viewEntryPage = await page.$('view-entry-page');
         back_button = await page.$('#back-button');
         await back_button.click();
-        home = await page.$('home-page');
-        newEntryButtonElement = await home.$('new-entry-button');
-        newEntryButton = await newEntryButtonElement.$('button');
       }
-      const numEntries = await home.$$eval(
+      const numEntries = await page.$$eval(
         'entry-item-component',
         (entryItems) => entryItems.length
       );
-      const entryItemData = await home.$$eval(
+      const entryItemData = await page.$$eval(
         'entry-item-component',
         (entryItems) => entryItems.map((entryItem) => entryItem.entryData)
       );
@@ -92,11 +83,11 @@ describe('Home end to end user flows', () => {
     });
 
     test('when entry is deleted, correct entry is deleted', async () => {
-      const entryItemToDelete = await home.$('entry-item-component');
+      const entryItemToDelete = await page.$('entry-item-component');
       const deleteButton = await entryItemToDelete.$('button');
       await deleteButton.evaluate((b) => b.click());
 
-      const entryItemData = await home.$$eval(
+      const entryItemData = await page.$$eval(
         'entry-item-component',
         (entryItems) => entryItems.map((entryItem) => entryItem.entryData)
       );
@@ -108,12 +99,12 @@ describe('Home end to end user flows', () => {
     });
 
     test('when all entries are deleted, no entries in localStorage', async () => {
-      const entryItems = await home.$$('entry-item-component');
+      const entryItems = await page.$$('entry-item-component');
       for (let entryItem of entryItems) {
         const deleteButton = await entryItem.$('button');
         await deleteButton.evaluate((b) => b.click());
       }
-      const entryItemData = await home.$$eval(
+      const entryItemData = await page.$$eval(
         'entry-item-component',
         (entryItems) => entryItems.map((entryItem) => entryItem.entryData)
       );
