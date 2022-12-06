@@ -1,3 +1,5 @@
+import { dateHelper } from '../../date-helper.js';
+
 /**
  * An item component that displays preview information about a single Entry
  * Displays: activityType, startTime
@@ -10,19 +12,6 @@ class EntryItem extends HTMLElement {
   // Entry Entity object to be stored here
   entryData = {};
 
-  /**
-   * Takes in a JSON Stringified Date object and returns a formatted string
-   * of a date
-   * @param {string} dateString - JSONed string of the date object
-   */
-  formatDate(dateString) {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat('en-US', {
-      dateStyle: 'long',
-      timeStyle: 'short',
-    }).format(date);
-  }
-
   connectedCallback() {
     this.entryData = JSON.parse(this.getAttribute('data'));
 
@@ -34,7 +23,7 @@ class EntryItem extends HTMLElement {
         <div class="inner-padding">
           <header class="entry-info">
             <h3 class="entry-label">${this.entryData?.workoutType}</h3>
-            <h5 class="date-label">${this.formatDate(
+            <h5 class="date-label">${dateHelper.formatDate(
               this.entryData?.startTime
             )}</h5>
             </header>

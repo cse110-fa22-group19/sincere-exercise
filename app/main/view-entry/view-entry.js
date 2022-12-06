@@ -1,33 +1,11 @@
+import { dateHelper } from '../date-helper.js';
+
 class ViewEntry extends HTMLElement {
   constructor() {
     super();
   }
 
   entryData = {};
-
-  /**
-   * Takes in a JSON Stringified Date object and returns a formatted string
-   * of a date
-   * @param {string} dateString - JSONed string of the date object
-   */
-  formatDate(dateString) {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat('en-US', {
-      dateStyle: 'long',
-    }).format(date);
-  }
-
-  /**
-   * Takes in a JSON Stringified Date object and returns a formatted string
-   * of a date
-   * @param {string} dateString - JSONed string of the date object
-   */
-  formatTime(dateString) {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat('en-US', {
-      timeStyle: 'short',
-    }).format(date);
-  }
 
   connectedCallback() {
     // Switch view mode to input mode
@@ -67,19 +45,19 @@ class ViewEntry extends HTMLElement {
           <div id = "time_flexbox" class = "main_flexbox_child">
             <div>
               <h3 class = "time_title">Exercise Date</h3>
-              <h4 id = "dates_value" class = "time_flexbox_value entry_data">${this.formatDate(
+              <h4 id = "dates_value" class = "time_flexbox_value entry_data">${dateHelper.formatDate(
                 this.entryData?.startTime
               )}</h4>
             </div>
               <div>
                 <h3 class = "time_title">Start Time</h3>
-                <h4 id="start_time" class = "time_flexbox_value entry_data">${this.formatTime(
+                <h4 id="start_time" class = "time_flexbox_value entry_data">${dateHelper.formatTime(
                   this.entryData?.startTime
                 )}</h4>
               </div>
               <div>
                 <h3 class = "time_title">End Time</h3>
-                <h4 id="end_time" class = "time_flexbox_value entry_data">${this.formatTime(
+                <h4 id="end_time" class = "time_flexbox_value entry_data">${dateHelper.formatTime(
                   this.entryData?.endTime
                 )}</h4>
               </div>
