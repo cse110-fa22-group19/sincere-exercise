@@ -40,6 +40,8 @@ jobs:
       - run: npm run doc
       - run: ls
       - run: |
+          git config --global user.email "yis004@ucsd.edu"
+          git config --global user.name "yis004"
           git add --all
           git commit -m "Generate JSdoc"
           git push
