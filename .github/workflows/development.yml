@@ -33,7 +33,6 @@ jobs:
         uses: actions/setup-node@v2
         env:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
-        with:
       - name: Puppeteer Headful
         uses: mujo-code/puppeteer-headful@18.9.0
       - run: npm run e2e-test
