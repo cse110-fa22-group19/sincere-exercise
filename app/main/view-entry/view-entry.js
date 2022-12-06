@@ -1,10 +1,18 @@
 import { dateHelper } from '../date-helper.js';
 
+/**
+ * View Entry page where users can view all data in an entry.
+ * This allows the user to edit data or go back to the home page.
+ */
 class ViewEntry extends HTMLElement {
   constructor() {
     super();
   }
 
+  /**
+   * Entry Entity object to be stored here
+   * @type {Entry}
+   */
   entryData = {};
 
   connectedCallback() {
@@ -82,12 +90,18 @@ class ViewEntry extends HTMLElement {
     const viewEntryPageLoaded = new Event('viewEntryPageLoaded');
     window.dispatchEvent(viewEntryPageLoaded);
 
+    /**
+     * The event if the edit button is clicked, user should be take in input entry page
+     */
     this.querySelector('#edit-button').addEventListener('click', () => {
       const editEntry = new Event('editEntry');
       editEntry.data = this.entryData;
       this.dispatchEvent(editEntry);
     });
 
+    /**
+     * The event if the back button is clicked, user should be taken to home page
+     */
     this.querySelector('#back-button').addEventListener('click', () => {
       console.log('clicked');
       const backHome = new Event('backHome');
