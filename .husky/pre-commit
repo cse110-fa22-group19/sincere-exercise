@@ -11,7 +11,7 @@ fi
 
 username="$(git config --get user.name)"
 
-if [ "$username" != "JSDoc_Generator"]; then
+if [ "$username" != "JSDoc_Generator" ]; then
   npm run e2e-test
 fi
 
