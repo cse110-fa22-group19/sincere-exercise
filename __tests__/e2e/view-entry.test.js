@@ -22,7 +22,11 @@ describe('View Entry end to end user flows', () => {
   let page;
 
   beforeAll(async () => {
-    browser = await puppeteer.launch();
+    browser = await puppeteer.launch({
+      args: ['--no-sandbox'],
+      executablePath: process.env.PUPPETEER_EXEC_PATH, // set by docker container
+      headless: false,
+    });
     page = await browser.newPage();
     // Local Testing
     // await page.goto('http://127.0.0.1:5500/');
