@@ -25,8 +25,7 @@ describe('View Entry end to end user flows', () => {
     browser = await puppeteer.launch();
     page = await browser.newPage();
     // Local Testing
-    // await page.goto('http://127.0.0.1:5500/');
-    await page.goto('https://cse110-fa22-group19.github.io/sincere-exercise/');
+    await page.goto('http://127.0.0.1:5500/');
   });
 
   describe('Navigate between home page and input-entry page', () => {
