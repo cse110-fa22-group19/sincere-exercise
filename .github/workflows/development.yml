@@ -35,10 +35,5 @@ jobs:
   documentation:
     runs-on: ubuntu-latest
     steps:
-      - name: Build
-        uses: andstor/jsdoc-action@v1
-        with:
-          source_dir: ./
-          recurse: true
-          config_file: ./jsdoc.json
-          front_page: README.md
+      - run: npm i
+      - run: npm run doc
