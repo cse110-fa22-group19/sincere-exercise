@@ -39,7 +39,13 @@ jobs:
   #     - run: npm i
   #     - run: npm run doc
   
-  folder:
-    runs-on: self-hosted
+  document:
+    name: "crazy doc"
+    runs-on: ubuntu-latest
+
     steps:
-      - run: mkdir out
+      - uses: actions/checkout@v2
+      - name: Install JSDoc
+        run: npm install -g jsdoc
+      - name: Generate JSDoc
+        run: jsdoc -r src
