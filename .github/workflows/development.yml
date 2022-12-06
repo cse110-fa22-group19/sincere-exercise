@@ -53,7 +53,7 @@ jobs:
       - name: Install JSDoc
         run: npm install -g jsdoc
       - name: Generate JSDoc
-        run: jsdoc -r ./
+        run: jsdoc -r ./src
       - name: List files in current directory
         run: ls
 
