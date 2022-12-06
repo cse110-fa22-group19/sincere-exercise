@@ -5,6 +5,17 @@
 export const dateHelper = {};
 
 /**
+ * Takes in the date and time and transforms it into a stringified
+ * Date object
+ * @param {string} date
+ * @param {string} time
+ * @returns JSON string Date object
+ */
+dateHelper.buildDateObject = (date, time) => {
+  return new Date(`${date} ${time}`).toJSON();
+};
+
+/**
  * Takes in a JSON Stringified Date object and returns a string parsable
  * by input element value attribute for the date.
  * @param {string} dateString
