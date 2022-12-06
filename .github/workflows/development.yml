@@ -40,8 +40,8 @@ jobs:
       - run: npm run doc
       - run: ls
       - run: |
-          git add
-          git commit
+          git add --all
+          git commit -m 
           git push
   
   # folder:
