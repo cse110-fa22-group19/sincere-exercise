@@ -34,7 +34,7 @@ jobs:
   # Generate documentation
   documentation:
     runs-on: ubuntu-latest
-    needs: [unit-test, e2e-test]
+    # needs: [unit-test, e2e-test]
     steps:
       - uses: actions/checkout@v3
       - run: npm i
