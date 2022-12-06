@@ -41,6 +41,7 @@ jobs:
       - run: npm run doc
       - run: ls
       - run: |
+          git config --global user.name "JSDoc_Generator"
           git add --all
           git commit -m "Generate JSdoc"
           git push
