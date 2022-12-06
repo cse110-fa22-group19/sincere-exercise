@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>JSDoc: Source: app/core/entry.entity.js</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="styles/prettify-tomorrow.css"
+    />
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css" />
+  </head>
+
+  <body>
+    <div id="main">
+      <h1 class="page-title">Source: app/core/entry.entity.js</h1>
+
+      <section>
+        <article>
+          <pre class="prettyprint source linenums"><code>/**
+ * Entry Entity
+ * Contains the methods for the CRUD functionality of the Entry entity
+ * Functions: createId(startTime), createEntity(), getAllEntries(), deleteEntry(__id)
+ *
+ * Entry {
+ *   __id: string,
+ *   workoutType: string,
+ *   location: string,
+ *   startTime: string, (JSON parsable to Date)
+ *   endTime: string, (JSON parsable to Date)
+ *   intensity: number,
+ *   note: string,
+ * }
+ */
+
+export const entryEntity = {};
+
+/**
+ * Creates a unique id for an entry. Concats the startTime and 5 digit
+ * random number together.
+ * @returns {string} a string value as the id of the entry
+ */
+entryEntity.createId = (startTime) => {
+  return startTime.toJSON() + (Math.floor(Math.random() * 90000) + 10000);
+};
+
+/**
+ * Populate the entry page with a defalut-value entry
+ * @returns {Entry} an entry object containing the __id as well
+ */
+entryEntity.createEntry = () => {
+  const now = new Date();
+  const later = new Date();
+  later.setHours(now.getHours() + 2);
+
+  const entryId = entryEntity.createId(now);
+
+  // Create hardcoded entry to save
+  const newEntry = {
+    __id: entryId,
+    workoutType: 'What is the activity to record?',
+    location: 'What is the location of this record?',
+    startTime: now.toJSON(),
+    endTime: later.toJSON(),
+    intensity: 0,
+    note: 'Any additional note to record?',
+  };
+
+  const entries = entryEntity.getAllEntries();
+  if (entries === {}) {
+    let entries = {
+      [entryId]: newEntry,
+    };
+    localStorage.setItem('entries', JSON.stringify(entries));
+  } else {
+    entries[entryId] = newEntry;
+    localStorage.setItem('entries', JSON.stringify(entries));
+  }
+  return newEntry;
+};
+
+/**
+ * Retrive the dictionary of entries from localStorage and return all
+ * saved entries in a list
+ * @returns {Entry[]} a list of Entry objects
+ */
+entryEntity.getAllEntries = () => {
+  const entries = localStorage.getItem('entries');
+  if (!entries) {
+    return {};
+  }
+  return JSON.parse(entries);
+};
+
+/**
+ * Delete the entry component with the key of the index
+ * @param {number} __id - The unique key for the entry component
+ */
+entryEntity.deleteEntry = (__id) => {
+  const entries = entryEntity.getAllEntries();
+  delete entries[__id];
+  localStorage.setItem('entries', JSON.stringify(entries));
+};
+
+/**
+ * Populate the entry page with the user input, assign new id and update the all
+ * entries by passing them in this function
+ * @param {Entry} entry - Pass the entry objects that we want to update
+ * @returns {Entry | null} - if updated correctly, the function will return the entry
+ * that has been updated, if failed, it will return null
+ */
+entryEntity.updateEntry = (entry) => {
+  const entries = entryEntity.getAllEntries();
+  if (typeof entries[entry.__id] === 'undefined') {
+    return null;
+  } else {
+    entries[entry.__id] = entry;
+    localStorage.setItem('entries', JSON.stringify(entries));
+    return entry;
+  }
+};
+
+/**
+ * Get a single entry by __id and return it from the local storage
+ * @param {number} __id - The ID of the entry that we want to retrieve
+ * @returns {Entry} - returns the entry in local storage represented by that ID.
+ */
+entryEntity.getEntry = (__id) => {
+  const entries = entryEntity.getAllEntries();
+  return entries[__id];
+};
+</code></pre>
+        </article>
+      </section>
+    </div>
+
+    <nav>
+      <h2><a href="index.html">Home</a></h2>
+      <h3>Classes</h3>
+      <ul>
+        <li><a href="EntryItem.html">EntryItem</a></li>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="InputEntry.html">InputEntry</a></li>
+        <li><a href="NavBar.html">NavBar</a></li>
+        <li><a href="NewEntryButton.html">NewEntryButton</a></li>
+        <li><a href="ViewEntry.html">ViewEntry</a></li>
+      </ul>
+      <h3>Global</h3>
+      <ul>
+        <li><a href="global.html#addEntryEvent">addEntryEvent</a></li>
+        <li><a href="global.html#createEntryItem">createEntryItem</a></li>
+        <li><a href="global.html#entryEntity">entryEntity</a></li>
+        <li><a href="global.html#getAllEntries">getAllEntries</a></li>
+        <li><a href="global.html#route">route</a></li>
+        <li><a href="global.html#updateEntryEvent">updateEntryEvent</a></li>
+      </ul>
+    </nav>
+
+    <br class="clear" />
+
+    <footer>
+      Documentation generated by
+      <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Tue Dec 06
+      2022 07:07:21 GMT+0000 (Coordinated Universal Time)
+    </footer>
+
+    <script>
+      prettyPrint();
+    </script>
+    <script src="scripts/linenumber.js"></script>
+  </body>
+</html>
