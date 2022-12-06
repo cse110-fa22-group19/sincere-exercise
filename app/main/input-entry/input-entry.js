@@ -11,17 +11,18 @@ class InputEntry extends HTMLElement {
    * @returns {Entry} - entry object with the new data grabbed from HTML
    */
   collectInputData() {
-    const workoutName = document.getElementById('workout-name').value;
-    const locationName = document.getElementById('location-name').value;
-    const exercisedate = document.getElementById('exercise-date').value; // yyyy-mm-dd
-    const startTime = document.getElementById('start-time').value; // hh:mm
-    const endTime = document.getElementById('end-time').value; // hh:mm
-    const intensity = document.getElementById('intensity').value;
-    const note = document.getElementById('note').value;
-    
+    const workoutType = document.getElementById('workout-name').value.trim();
+    const locationName = document.getElementById('location-name').value.trim();
+    const exercisedate = document.getElementById('exercise-date').value.trim(); // yyyy-mm-dd
+    const startTime = document.getElementById('start-time').value.trim(); // hh:mm
+    const endTime = document.getElementById('end-time').value.trim(); // hh:mm
+    const intensity = document.getElementById('intensity').value.trim();
+    const note = document.getElementById('note').value.trim();
+
+    // For each property, if the entry inputted is empty, don't save value
     return {
       __id: this.entryData.__id,
-      workoutType: workoutName || this.entryData.workoutName,
+      workoutType: workoutType || this.entryData.workoutType,
       location: locationName || this.entryData.location,
       startTime: startTime
         ? new Date(`${exercisedate} ${startTime}`).toJSON()
@@ -29,9 +30,24 @@ class InputEntry extends HTMLElement {
       endTime: endTime
         ? new Date(`${exercisedate} ${endTime}`).toJSON()
         : this.entryData.endTime,
-      intensity: +intensity || this.entryData.intensity,
+      intensity: this.allowCorrectIntensity(
+        this.entryData.intensity,
+        intensity
+      ),
       note: note || this.entryData.note,
     };
+  }
+
+  /**
+   * Checks if a number is a number from 1 to 5. If it is, the new value returned
+   * else the original intensity is returned
+   * @param {number} intensity - original intensity value
+   * @param {string} newValue - new intensity value
+   */
+  allowCorrectIntensity(intensity, newValue) {
+    return !isNaN(newValue) && 1 <= +newValue && +newValue <= 5
+      ? +newValue
+      : intensity;
   }
 
   connectedCallback() {
