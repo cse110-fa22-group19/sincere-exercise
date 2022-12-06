@@ -9,4 +9,6 @@ if [ "$branch" = "main" ]; then
   exit 1
 fi
 
+npm run e2e-test
+
 npx lint-staged
