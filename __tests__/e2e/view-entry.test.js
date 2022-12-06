@@ -29,6 +29,8 @@ describe('View Entry end to end user flows', () => {
     });
     page = await browser.newPage();
     // Local Testing
+    console.log('path', process.env.PUPPETEER_EXEC_PATH);
+    await page.goto(process.env.PUPPETEER_EXEC_PATH);
     // await page.goto('http://127.0.0.1:5500/');
     // await page.goto('https://cse110-fa22-group19.github.io/sincere-exercise/');
   });
