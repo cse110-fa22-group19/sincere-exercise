@@ -39,7 +39,10 @@ jobs:
       - run: npm i
       - run: npm run doc
       - run: ls
-      - run: git push
+      - run: |
+          git add
+          git commit
+          git push
   
   # folder:
   #   runs-on: ubuntu-latest
