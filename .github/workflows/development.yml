@@ -43,6 +43,5 @@ jobs:
         with:
           source_dir: ./
           recurse: true
-          output_dir: ./out
           config_file: jsdoc.json
           front_page: README.md
