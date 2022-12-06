@@ -1,41 +1,11 @@
-/**
- * View Entry page where users can view all data in an entry.
- * This allows the user to edit data or go back to the home page.
- */
+import { dateHelper } from '../date-helper.js';
+
 class ViewEntry extends HTMLElement {
   constructor() {
     super();
   }
 
-  /**
-   * Entry Entity object to be stored here
-   * @type {Entry}
-   */
   entryData = {};
-
-  /**
-   * Takes in a JSON Stringified Date object and returns a formatted string
-   * of a date
-   * @param {string} dateString - JSONed string of the date object
-   */
-  formatDate(dateString) {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat('en-US', {
-      dateStyle: 'long',
-    }).format(date);
-  }
-
-  /**
-   * Takes in a JSON Stringified Date object and returns a formatted string
-   * of a date
-   * @param {string} dateString - JSONed string of the date object
-   */
-  formatTime(dateString) {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat('en-US', {
-      timeStyle: 'short',
-    }).format(date);
-  }
 
   connectedCallback() {
     // Switch view mode to input mode
@@ -75,19 +45,19 @@ class ViewEntry extends HTMLElement {
           <div id = "time_flexbox" class = "main_flexbox_child">
             <div>
               <h3 class = "time_title">Exercise Date</h3>
-              <h4 id = "dates_value" class = "time_flexbox_value entry_data">${this.formatDate(
+              <h4 id = "dates_value" class = "time_flexbox_value entry_data">${dateHelper.formatDate(
                 this.entryData?.startTime
               )}</h4>
             </div>
               <div>
                 <h3 class = "time_title">Start Time</h3>
-                <h4 id="start_time" class = "time_flexbox_value entry_data">${this.formatTime(
+                <h4 id="start_time" class = "time_flexbox_value entry_data">${dateHelper.formatTime(
                   this.entryData?.startTime
                 )}</h4>
               </div>
               <div>
                 <h3 class = "time_title">End Time</h3>
-                <h4 id="end_time" class = "time_flexbox_value entry_data">${this.formatTime(
+                <h4 id="end_time" class = "time_flexbox_value entry_data">${dateHelper.formatTime(
                   this.entryData?.endTime
                 )}</h4>
               </div>
@@ -112,18 +82,12 @@ class ViewEntry extends HTMLElement {
     const viewEntryPageLoaded = new Event('viewEntryPageLoaded');
     window.dispatchEvent(viewEntryPageLoaded);
 
-    /**
-     * The event if the edit button is clicked, user should be take in input entry page
-     */
     this.querySelector('#edit-button').addEventListener('click', () => {
       const editEntry = new Event('editEntry');
       editEntry.data = this.entryData;
       this.dispatchEvent(editEntry);
     });
 
-    /**
-     * The event if the back button is clicked, user should be taken to home page
-     */
     this.querySelector('#back-button').addEventListener('click', () => {
       console.log('clicked');
       const backHome = new Event('backHome');

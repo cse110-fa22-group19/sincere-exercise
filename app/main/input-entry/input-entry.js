@@ -1,17 +1,11 @@
-/**
- * Input Entry page where users can input all data in an entry.
- * This allows the user to input new data to a created entry or edit an entry
- * that was previously created.
- */
+import { dateHelper } from '../date-helper.js';
+
 class InputEntry extends HTMLElement {
   constructor() {
     super();
   }
 
-  /**
-   * Entry Entity object to be stored here
-   * @type {Entry}
-   */
+  // Entry Entity object to be stored here
   entryData = {};
 
   /**
@@ -19,24 +13,47 @@ class InputEntry extends HTMLElement {
    * @returns {Entry} - entry object with the new data grabbed from HTML
    */
   collectInputData() {
-    const workoutName = document.getElementById('workout-name').value;
-    const locationName = document.getElementById('location-name').value;
+    const workoutType = document.getElementById('workout-name').value.trim();
+    const locationName = document.getElementById('location-name').value.trim();
     const exercisedate = document.getElementById('exercise-date').value; // yyyy-mm-dd
     const startTime = document.getElementById('start-time').value; // hh:mm
     const endTime = document.getElementById('end-time').value; // hh:mm
-    const intensity = document.getElementById('intensity').value;
-    const note = document.getElementById('note').value;
+    const intensity = document.getElementById('intensity').value.trim();
+    const note = document.getElementById('note').value.trim();
 
-    // Entry object
+    console.log(exercisedate);
+    console.log(new Date(`${exercisedate} ${startTime}`));
+    console.log(new Date(`${exercisedate} ${startTime}`).toJSON());
+
+    // For each property, if the entry inputted is empty, don't save value
     return {
       __id: this.entryData.__id,
-      workoutType: workoutName,
-      location: locationName,
-      startTime: new Date(`${exercisedate} ${startTime}`).toJSON(),
-      endTime: new Date(`${exercisedate} ${endTime}`).toJSON(),
-      intensity: +intensity,
-      note: note,
+      workoutType: workoutType || this.entryData.workoutType,
+      location: locationName || this.entryData.location,
+      startTime: startTime
+        ? new Date(`${exercisedate} ${startTime}`).toJSON()
+        : this.entryData.startTime,
+      endTime: endTime
+        ? new Date(`${exercisedate} ${endTime}`).toJSON()
+        : this.entryData.endTime,
+      intensity: this.allowCorrectIntensity(
+        this.entryData.intensity,
+        intensity
+      ),
+      note: note || this.entryData.note,
     };
+  }
+
+  /**
+   * Checks if a number is a number from 1 to 5. If it is, the new value returned
+   * else the original intensity is returned
+   * @param {number} intensity - original intensity value
+   * @param {string} newValue - new intensity value
+   */
+  allowCorrectIntensity(intensity, newValue) {
+    return !isNaN(newValue) && 1 <= +newValue && +newValue <= 5
+      ? +newValue
+      : intensity;
   }
 
   connectedCallback() {
@@ -59,6 +76,7 @@ class InputEntry extends HTMLElement {
                 type="text"
                 id="workout-name"
                 placeholder="Enter Workout"
+                value="${this.entryData?.workoutType}"
               />
             </div>
             <div class = "main_flexbox_child">
@@ -67,6 +85,7 @@ class InputEntry extends HTMLElement {
                 type="text"
                 id="location-name"
                 placeholder="Enter location"
+                value="${this.entryData?.location}"
               />
             </div>
             <div id = "time_flexbox" class = "main_flexbox_child">
@@ -76,6 +95,9 @@ class InputEntry extends HTMLElement {
                   class = "time_input"
                   type="date"
                   id="exercise-date"
+                  value="${dateHelper.formatDateValue(
+                    this.entryData?.startTime
+                  )}"
                 />
               </div>
               <div>
@@ -84,6 +106,9 @@ class InputEntry extends HTMLElement {
                   class = "time_input"
                   type="time"
                   id="start-time"
+                  value="${dateHelper.formatTimeValue(
+                    this.entryData?.startTime
+                  )}"
                 />
               </div>
               <div>
@@ -92,6 +117,7 @@ class InputEntry extends HTMLElement {
                   class = "time_input"
                   type="time"
                   id="end-time"
+                  value="${dateHelper.formatTimeValue(this.entryData?.endTime)}"
                 />
               </div>
             </div>
@@ -102,6 +128,7 @@ class InputEntry extends HTMLElement {
                 id = "intensity"
                 min="1"
                 max="5"
+                value="${this.entryData?.intensity}"
               />
             </div>
             <div class = "main_flexbox_child">
@@ -122,19 +149,12 @@ class InputEntry extends HTMLElement {
     const inputEntryPageLoaded = new Event('inputEntryPageLoaded');
     window.dispatchEvent(inputEntryPageLoaded);
 
-    /**
-     * When cancel button is clicked, user should be taken back to view entry page
-     */
     this.querySelector('#cancel-button').addEventListener('click', () => {
       const cancelInputEntry = new Event('cancelInputEntry');
       cancelInputEntry.data = this.entryData;
       this.dispatchEvent(cancelInputEntry);
     });
 
-    /**
-     * When save button is clicked, the user should be taken back to view entry page
-     * as the entry should be updated with the new data.
-     */
     this.querySelector('#save-button').addEventListener('click', () => {
       // grab all data
       const newEntry = this.collectInputData();
