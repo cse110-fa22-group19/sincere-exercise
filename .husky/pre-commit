@@ -9,6 +9,10 @@ if [ "$branch" = "main" ]; then
   exit 1
 fi
 
-npm run e2e-test
+username="$(git config --get user.name)"
+
+if [ "$username" != "JSDoc_Generator"]; then
+  npm run e2e-test
+fi
 
 npx lint-staged
