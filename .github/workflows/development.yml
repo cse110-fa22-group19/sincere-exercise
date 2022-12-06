@@ -33,9 +33,14 @@ jobs:
 
   # Generate documentation
   documentation:
-    name: Build
-    uses: andstor/jsdoc-action@v1
-    with:
-    source_dir: ./
-    recurse: true
-    output_dir: ./docs
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build
+        uses: andstor/jsdoc-action@v1
+        with:
+          source_dir: ./
+          output_dir: ./docs
+          config_file: jsdoc.json
+          front_page: README.md
