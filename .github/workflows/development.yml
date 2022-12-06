@@ -35,10 +35,7 @@ jobs:
   documentation:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
       - name: Build
         uses: brunokrauss/jsdoc-action@1
         with:
-            jsdoc-path: './'
+          jsdoc-path: './'
