@@ -21,21 +21,19 @@ class InputEntry extends HTMLElement {
     const intensity = document.getElementById('intensity').value.trim();
     const note = document.getElementById('note').value.trim();
 
-    console.log(exercisedate);
-    console.log(new Date(`${exercisedate} ${startTime}`));
-    console.log(new Date(`${exercisedate} ${startTime}`).toJSON());
-
     // For each property, if the entry inputted is empty, don't save value
     return {
       __id: this.entryData.__id,
       workoutType: workoutType || this.entryData.workoutType,
       location: locationName || this.entryData.location,
-      startTime: startTime
-        ? new Date(`${exercisedate} ${startTime}`).toJSON()
-        : this.entryData.startTime,
-      endTime: endTime
-        ? new Date(`${exercisedate} ${endTime}`).toJSON()
-        : this.entryData.endTime,
+      startTime:
+        exercisedate && startTime
+          ? dateHelper.buildDateObject(exercisedate, startTime)
+          : this.entryData.startTime,
+      endTime:
+        exercisedate && endTime
+          ? dateHelper.buildDateObject(exercisedate, endTime)
+          : this.entryData.endTime,
       intensity: this.allowCorrectIntensity(
         this.entryData.intensity,
         intensity

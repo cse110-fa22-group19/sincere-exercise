@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
 
 /**
- * View/Input-Entry Page End to End tests
+ * View-Entry Page End to End tests
  * Contains tests that test the View/Input-Entry page interface functionality.
  *
  * Actions to test:
@@ -45,10 +45,14 @@ describe('View Entry end to end user flows', () => {
       await newEntryButton.click();
     });
 
+    afterAll(async () => {
+      await page.reload();
+    });
+
     test('Page changes to input_entry page', async () => {
       inputEntryPage = await page.$('input-entry-page');
       homePage = await page.$('home-page');
-      expect(homePage === null && inputEntryPage !== null).toBe(true);
+      expect(!homePage && !!inputEntryPage).toBe(true);
     });
 
     test('Page changes to view_entry page', async () => {
@@ -56,7 +60,7 @@ describe('View Entry end to end user flows', () => {
       await cancel_button.click();
       viewEntryPage = await page.$('view-entry-page');
       inputEntryPage = await page.$('input-entry-page');
-      expect(inputEntryPage === null && viewEntryPage !== null).toBe(true);
+      expect(!inputEntryPage && !!viewEntryPage).toBe(true);
     });
 
     test('Page changes to home page', async () => {
@@ -64,7 +68,7 @@ describe('View Entry end to end user flows', () => {
       await back_button.click();
       viewEntryPage = await page.$('view-entry-page');
       homePage = await page.$('home-page');
-      expect(viewEntryPage === null && homePage !== null).toBe(true);
+      expect(!viewEntryPage && !!homePage).toBe(true);
     });
   });
 
@@ -85,10 +89,14 @@ describe('View Entry end to end user flows', () => {
       await newEntryButton.click();
     });
 
+    afterAll(async () => {
+      await page.reload();
+    });
+
     test('Page changes to input_entry page', async () => {
       inputEntryPage = await page.$('input-entry-page');
       homePage = await page.$('home-page');
-      expect(homePage === null && inputEntryPage !== null).toBe(true);
+      expect(!homePage && !!inputEntryPage).toBe(true);
     });
 
     test('Page changes to view_entry page', async () => {
@@ -96,7 +104,7 @@ describe('View Entry end to end user flows', () => {
       await save_button.click();
       viewEntryPage = await page.$('view-entry-page');
       inputEntryPage = await page.$('input-entry-page');
-      expect(inputEntryPage === null && viewEntryPage !== null).toBe(true);
+      expect(!inputEntryPage && !!viewEntryPage).toBe(true);
     });
 
     test('Page changes back to input_entry page', async () => {
@@ -104,7 +112,7 @@ describe('View Entry end to end user flows', () => {
       await edit_button.click();
       viewEntryPage = await page.$('view-entry-page');
       inputEntryPage = await page.$('input-entry-page');
-      expect(viewEntryPage === null && inputEntryPage !== null).toBe(true);
+      expect(!viewEntryPage && !!inputEntryPage).toBe(true);
     });
 
     test('Page changes back to view_entry page', async () => {
@@ -112,7 +120,7 @@ describe('View Entry end to end user flows', () => {
       await save_button.click();
       viewEntryPage = await page.$('view-entry-page');
       inputEntryPage = await page.$('input-entry-page');
-      expect(inputEntryPage === null && viewEntryPage !== null).toBe(true);
+      expect(!inputEntryPage && !!viewEntryPage).toBe(true);
     });
 
     test('Page changes to home page', async () => {
@@ -120,7 +128,7 @@ describe('View Entry end to end user flows', () => {
       await back_button.click();
       viewEntryPage = await page.$('view-entry-page');
       homePage = await page.$('home-page');
-      expect(viewEntryPage === null && homePage !== null).toBe(true);
+      expect(!viewEntryPage && !!homePage).toBe(true);
     });
   });
 
@@ -140,10 +148,14 @@ describe('View Entry end to end user flows', () => {
       await newEntryButton.click();
     });
 
+    afterAll(async () => {
+      await page.reload();
+    });
+
     test('Page changes to input_entry page', async () => {
       inputEntryPage = await page.$('input-entry-page');
       homePage = await page.$('home-page');
-      expect(homePage === null && inputEntryPage !== null).toBe(true);
+      expect(!homePage && !!inputEntryPage).toBe(true);
     });
 
     test('Page changes to view_entry page', async () => {
@@ -151,7 +163,7 @@ describe('View Entry end to end user flows', () => {
       await save_button.click();
       viewEntryPage = await page.$('view-entry-page');
       inputEntryPage = await page.$('input-entry-page');
-      expect(inputEntryPage === null && viewEntryPage !== null).toBe(true);
+      expect(!inputEntryPage && !!viewEntryPage).toBe(true);
     });
 
     test('Page changes to home page', async () => {
@@ -159,7 +171,7 @@ describe('View Entry end to end user flows', () => {
       await back_button.click();
       viewEntryPage = await page.$('view-entry-page');
       homePage = await page.$('home-page');
-      expect(viewEntryPage === null && homePage !== null).toBe(true);
+      expect(!viewEntryPage && !!homePage).toBe(true);
     });
   });
 
