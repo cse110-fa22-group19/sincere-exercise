@@ -38,16 +38,17 @@ input {
 }
 #main_flexbox {
   order: 1;
-  margin: 9em;
   display: flex;
   flex-direction: column;
+  align-self: center;
+  min-width:1800px;
 }
 #intensity_input {
   width: 10%;
 }
 #time_flexbox {
   display: grid;
-  grid-template-columns: 25% 25% 25%;
+  grid-template-columns: 25% 25% 10%;
   margin-left: 24.3%;
 }
 #navbar {

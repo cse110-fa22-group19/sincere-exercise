@@ -20,7 +20,7 @@ h3 {
 input {
   border-color: #9795dc;
   width: 40%;
-  height: 2vw;
+  min-height: 2vw;
   margin-top: 0.5%;
   border-radius: 0.7vw;
   color: #9795dc;
@@ -32,7 +32,7 @@ input {
 textarea {
   border-color: #9795dc;
   width: 40.5%;
-  height: 7vw;
+  min-height: 7vw;
   margin-top: 0.5em;
   border-radius: 0.7vw;
   color: #9795dc;
@@ -54,12 +54,10 @@ button {
 }
 #main_flexbox {
   order: 1;
-  margin: 9em;
   display: flex;
   flex-direction: column;
-}
-#intensity_input {
-  width: 10%;
+  align-self: center;
+  width:1800px;
 }
 #time_flexbox {
   display: grid;
