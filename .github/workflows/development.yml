@@ -35,6 +35,10 @@ jobs:
   documentation:
     runs-on: ubuntu-latest
     steps:
-      - run: cd ./sincere-exercise
-      - run: npm i
-      - run: npm run doc
+      - name: Checkout code
+          uses: actions/checkout@v2
+
+      - name: Build
+        - run: npm i
+        - run: npm run doc
+        working-directory: ./
