@@ -42,17 +42,17 @@ describe('View Entry end to end user flows', () => {
       newEntryButtonElement = await homePage.$('new-entry-button');
       newEntryButton = await newEntryButtonElement.$('button');
       await newEntryButton.click();
-    });
+    }, 10000);
 
     afterAll(async () => {
       await page.reload();
-    });
+    }, 10000);
 
     test('Page changes to input_entry page', async () => {
       inputEntryPage = await page.$('input-entry-page');
       homePage = await page.$('home-page');
       expect(!homePage && !!inputEntryPage).toBe(true);
-    });
+    }, 10000);
 
     test('Page changes to view_entry page', async () => {
       cancel_button = await page.$('#cancel-button');
@@ -60,7 +60,7 @@ describe('View Entry end to end user flows', () => {
       viewEntryPage = await page.$('view-entry-page');
       inputEntryPage = await page.$('input-entry-page');
       expect(!inputEntryPage && !!viewEntryPage).toBe(true);
-    });
+    }, 10000);
 
     test('Page changes to home page', async () => {
       back_button = await page.$('#back-button');
@@ -68,7 +68,7 @@ describe('View Entry end to end user flows', () => {
       viewEntryPage = await page.$('view-entry-page');
       homePage = await page.$('home-page');
       expect(!viewEntryPage && !!homePage).toBe(true);
-    });
+    }, 10000);
   });
 
   describe('Navigate between home page, input-entry page, and save to view-entry page', () => {
@@ -86,17 +86,17 @@ describe('View Entry end to end user flows', () => {
       newEntryButtonElement = await homePage.$('new-entry-button');
       newEntryButton = await newEntryButtonElement.$('button');
       await newEntryButton.click();
-    });
+    }, 10000);
 
     afterAll(async () => {
       await page.reload();
-    });
+    }, 10000);
 
     test('Page changes to input_entry page', async () => {
       inputEntryPage = await page.$('input-entry-page');
       homePage = await page.$('home-page');
       expect(!homePage && !!inputEntryPage).toBe(true);
-    });
+    }, 10000);
 
     test('Page changes to view_entry page', async () => {
       save_button = await page.$('#save-button');
@@ -104,7 +104,7 @@ describe('View Entry end to end user flows', () => {
       viewEntryPage = await page.$('view-entry-page');
       inputEntryPage = await page.$('input-entry-page');
       expect(!inputEntryPage && !!viewEntryPage).toBe(true);
-    });
+    }, 10000);
 
     test('Page changes back to input_entry page', async () => {
       edit_button = await page.$('#edit-button');
@@ -112,7 +112,7 @@ describe('View Entry end to end user flows', () => {
       viewEntryPage = await page.$('view-entry-page');
       inputEntryPage = await page.$('input-entry-page');
       expect(!viewEntryPage && !!inputEntryPage).toBe(true);
-    });
+    }, 10000);
 
     test('Page changes back to view_entry page', async () => {
       save_button = await page.$('#save-button');
@@ -120,7 +120,7 @@ describe('View Entry end to end user flows', () => {
       viewEntryPage = await page.$('view-entry-page');
       inputEntryPage = await page.$('input-entry-page');
       expect(!inputEntryPage && !!viewEntryPage).toBe(true);
-    });
+    }, 10000);
 
     test('Page changes to home page', async () => {
       back_button = await page.$('#back-button');
@@ -128,7 +128,7 @@ describe('View Entry end to end user flows', () => {
       viewEntryPage = await page.$('view-entry-page');
       homePage = await page.$('home-page');
       expect(!viewEntryPage && !!homePage).toBe(true);
-    });
+    }, 10000);
   });
 
   describe('Navigate between home page, input-entry page, save to view-entry page, and back to home page', () => {
@@ -145,17 +145,17 @@ describe('View Entry end to end user flows', () => {
       newEntryButtonElement = await homePage.$('new-entry-button');
       newEntryButton = await newEntryButtonElement.$('button');
       await newEntryButton.click();
-    });
+    }, 10000);
 
     afterAll(async () => {
       await page.reload();
-    });
+    }, 10000);
 
     test('Page changes to input_entry page', async () => {
       inputEntryPage = await page.$('input-entry-page');
       homePage = await page.$('home-page');
       expect(!homePage && !!inputEntryPage).toBe(true);
-    });
+    }, 10000);
 
     test('Page changes to view_entry page', async () => {
       save_button = await page.$('#save-button');
@@ -163,7 +163,7 @@ describe('View Entry end to end user flows', () => {
       viewEntryPage = await page.$('view-entry-page');
       inputEntryPage = await page.$('input-entry-page');
       expect(!inputEntryPage && !!viewEntryPage).toBe(true);
-    });
+    }, 10000);
 
     test('Page changes to home page', async () => {
       back_button = await page.$('#back-button');
@@ -171,7 +171,7 @@ describe('View Entry end to end user flows', () => {
       viewEntryPage = await page.$('view-entry-page');
       homePage = await page.$('home-page');
       expect(!viewEntryPage && !!homePage).toBe(true);
-    });
+    }, 10000);
   });
 
   afterAll(async () => {
