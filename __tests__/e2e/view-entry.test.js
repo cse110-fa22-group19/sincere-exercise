@@ -26,7 +26,7 @@ describe('View Entry end to end user flows', () => {
     page = await browser.newPage();
     // Local Testing
     await page.goto('http://127.0.0.1:5500/');
-  });
+  }, 10000);
 
   describe('Navigate between home page and input-entry page', () => {
     let homePage;

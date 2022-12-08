@@ -16,5 +16,5 @@ if [ "$username" != "JSDoc_Generator" ]; then
   npm run e2e-test
 fi
 
-# ESlint clean up all the code
+# ESlint clean up all the code files
 npx lint-staged
