@@ -16,7 +16,7 @@ describe('Home end to end user flows', () => {
     // Local Testing
     await page.goto('http://127.0.0.1:5500/');
     localStorage.clear();
-  });
+  }, 10000);
 
   describe('Create and delete entries', () => {
     test('when click cancel adding new entry button, entry is still shown', async () => {
@@ -32,7 +32,7 @@ describe('Home end to end user flows', () => {
         (entryItems) => entryItems.length
       );
       expect(numEntries).toBe(1);
-    });
+    }, 10000);
 
     test('if new entry item contains accurate entry data', async () => {
       const entryItemData = await page.$eval(
@@ -43,7 +43,7 @@ describe('Home end to end user flows', () => {
         () => Object.values(JSON.parse(localStorage.getItem('entries')))[0]
       );
       expect(entryItemData).toEqual(entity);
-    });
+    }, 10000);
 
     test('when more entries are added, entry count and data are accurate', async () => {
       for (let i = 0; i < 9; i++) {
@@ -68,7 +68,7 @@ describe('Home end to end user flows', () => {
       );
       expect(numEntries).toBe(10);
       expect(entryItemData).toEqual(entities);
-    });
+    }, 10000);
 
     test('when entry is deleted, correct entry is deleted', async () => {
       const entryItemToDelete = await page.$('entry-item-component');
@@ -84,7 +84,7 @@ describe('Home end to end user flows', () => {
       );
       expect(entryItemData.length).toBe(9);
       expect(entryItemData).toEqual(entities);
-    });
+    }, 10000);
 
     test('when all entries are deleted, no entries in localStorage', async () => {
       const entryItems = await page.$$('entry-item-component');
@@ -102,11 +102,11 @@ describe('Home end to end user flows', () => {
       expect(entryItemData.length).toBe(0);
       expect(entryItemData).toEqual(entities);
     });
-  });
+  }, 10000);
 
   afterAll(async () => {
     localStorage.clear();
     await page.close();
     await browser.close();
-  });
+  }, 10000);
 });
